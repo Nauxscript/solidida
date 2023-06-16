@@ -6,6 +6,7 @@ import { ErrorBoundary } from 'solid-start/error-boundary'
 import './style.css'
 // import 'uno.css'
 import 'virtual:uno.css'
+import BaseLayout from './layouts/BaseLayout'
 
 export default function Root() {
   return (
@@ -20,9 +21,11 @@ export default function Root() {
       <Body>
         <Suspense>
           <ErrorBoundary>
-            <Routes>
-              <FileRoutes />
-            </Routes>
+            <BaseLayout>
+              <Routes>
+                <FileRoutes />
+              </Routes>
+            </BaseLayout>
           </ErrorBoundary>
         </Suspense>
         <Scripts />
