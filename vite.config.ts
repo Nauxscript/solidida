@@ -11,7 +11,7 @@ import vercelAdapter from 'solid-start-vercel'
 export default defineConfig({
   resolve: {
     alias: {
-      '~/': `${path.resolve(__dirname, 'src')}/`,
+      '@': `${path.resolve(__dirname, 'src')}`,
     },
   },
   plugins: [
