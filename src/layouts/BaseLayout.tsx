@@ -7,7 +7,7 @@ const BaseLayout: ParentComponent = (props) => {
   return <div h-100vh w-100vw overflow-hidden>
     <div flex h-full>
       <Navbar></Navbar>
-      <div >
+      <div w-full>
         {c()}
       </div>
     </div>
