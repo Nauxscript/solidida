@@ -38,6 +38,7 @@
 		"vitest": "^0.28.5"
 	},
 	"dependencies": {
+		"ink-mde": "^0.25.1",
 		"solid-js": "^1.6.10"
 	}
 }
