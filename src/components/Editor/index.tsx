@@ -31,7 +31,7 @@ const Editor = (props: EditorProps) => {
       toolbar: false,
       lists: true,
     },
-    vim: true,
+    // vim: true,
   })
 
   const handleInitEditor = (el: HTMLDivElement) => {
