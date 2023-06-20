@@ -28,6 +28,10 @@ export default defineConfig({
           warn: true,
         }),
       ],
+      shortcuts: {
+        'flex-col-box': 'flex flex-col',
+        'flex-both-center': 'flex items-center justify-center',
+      },
     }),
     AutoImport({
       imports: ['solid-js', 'solid-app-router'],
