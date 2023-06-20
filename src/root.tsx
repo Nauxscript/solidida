@@ -18,7 +18,7 @@ export default function Root() {
         <Meta name="description" content="Opinionated Vite Starter Template" />
         <link rel="icon" href="./favicon.svg"/>
       </Head>
-      <Body bg-gray-200>
+      <Body>
         <Suspense>
           <ErrorBoundary>
             <BaseLayout>
