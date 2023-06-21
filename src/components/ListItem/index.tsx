@@ -1,5 +1,4 @@
 import type { ParentComponent } from 'solid-js'
-import { useListProvide } from '../List'
 
 export type ListItemId = string | number
 export interface ListItemProps {
@@ -9,6 +8,7 @@ export interface ListItemProps {
   count?: number
   icon?: string
   hasTool?: boolean
+  activeKey?: ListItemId
   itemClick?: (id: ListItemProps['id'], index: number, event: MouseEvent) => void
 }
 
@@ -16,13 +16,11 @@ type ListItemComProps = ParentComponent<ListItemProps>
 
 const ListItem: ListItemComProps = (props) => {
   const c = children(() => props.children)
-  const [currentItem, setCurrentItem] = useListProvide()
   const handleItemClick = (e: MouseEvent) => {
     props.itemClick?.(props.id, props.index, e)
-    setCurrentItem(props.id)
   }
   return (
-    <li class='group' flex items-center text-sm lh-10 font-normal list-none px-3 rounded cursor-pointer hover:bg-blue-50 classList={{ '!bg-blue-1': currentItem() === props.id }} onClick={handleItemClick}>
+    <li class='group' flex items-center text-sm lh-10 font-normal list-none px-3 rounded cursor-pointer hover:bg-blue-50 classList={{ '!bg-blue-1': props.activeKey === props.id }} onClick={handleItemClick}>
       { props.icon && <i class={props.icon} text-gray-4></i>}
       <div class="content" px-2 flex-1>
         {c()}
