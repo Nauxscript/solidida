@@ -1,6 +1,6 @@
+import type { ParentComponent } from 'solid-js'
 import { children } from 'solid-js'
 import Navbar from '@/components/Navbar/index'
-import type { ParentComponent } from '@/utils/typeHelper'
 
 const BaseLayout: ParentComponent = (props) => {
   const c = children(() => props.children)
