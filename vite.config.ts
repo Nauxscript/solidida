@@ -32,6 +32,14 @@ export default defineConfig({
         'flex-col-box': 'flex flex-col',
         'flex-both-center': 'flex items-center justify-center',
       },
+      safelist: [
+        // dynamic icon
+        'i-carbon-calendar',
+        'i-carbon-sunrise',
+        'i-carbon-recently-viewed',
+        'i-carbon-user-role',
+        'i-carbon-archive',
+      ],
     }),
     AutoImport({
       imports: ['solid-js', 'solid-app-router'],
