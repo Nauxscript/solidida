@@ -11,7 +11,7 @@ export default function MainLayout(props: {
   const { handleLeftDividerDrag, handleRightDividerDrag } = useDividerDrag(leftEleRef, rightEleRef, centerEleRef)
   return (
     <div flex w-full h-full>
-      <div ref={el => setLeftEleRef(el)} w-300px overflow-y-auto>
+      <div ref={el => setLeftEleRef(el)} w-300px overflow-y-auto py-2>
         {props.archive}
       </div>
       <div w-2px bg-gray-1 hover:bg-blue-1 cursor-w-resize onMouseDown={handleLeftDividerDrag}></div>

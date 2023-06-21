@@ -6,21 +6,22 @@ interface NavRouteItem {
   styles?: string
 }
 
+const routes: NavRouteItem[] = [{
+  icon: 'i-carbon-checkbox-checked',
+  to: '',
+}, {
+  icon: 'i-carbon-calendar-heat-map',
+  to: '',
+}, {
+  icon: 'i-carbon-task-complete',
+  to: '',
+}, {
+  icon: 'i-carbon-search',
+  to: '',
+  styles: '!text-4 ml-1',
+}]
+
 export default function Navbar() {
-  const routes: NavRouteItem[] = [{
-    icon: 'i-carbon-checkbox-checked',
-    to: '',
-  }, {
-    icon: 'i-carbon-calendar-heat-map',
-    to: '',
-  }, {
-    icon: 'i-carbon-task-complete',
-    to: '',
-  }, {
-    icon: 'i-carbon-search',
-    to: '',
-    styles: '!text-4 ml-1',
-  }]
   return (
     <div h-full w-12 bg-blue-1 flex-col-box>
       <div class="user" flex-both-center bg-gray-2 w-8 h-8 mx-2 my-6 rounded text-gray-3 hover:text-gray-5 cursor-pointer>
