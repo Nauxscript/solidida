@@ -7,6 +7,13 @@ enum SmartProjectKeys {
   ASSIGNED,
   COLLECTED,
 }
+
+enum TaskStatus {
+  COMPLETED,
+  DELETED,
+  ABANDONED,
+}
+
 export const smartProjectBaseData: ListItemProps[] = [
   {
     id: SmartProjectKeys.TODAY,
@@ -34,5 +41,63 @@ export const smartProjectBaseData: ListItemProps[] = [
     id: SmartProjectKeys.COLLECTED,
     title: '收集箱',
     icon: 'i-carbon-archive',
+  },
+].map((item, index) => ({ ...item, index }))
+
+export const mainProjectBaseData: ListItemProps[] = [
+  {
+    id: 'detailList',
+    title: '清单',
+    children: [{
+      id: 1,
+      title: '清单 1',
+      icon: 'i-carbon-menu',
+    },
+    {
+      id: 2,
+      title: '清单 2',
+      icon: 'i-carbon-menu',
+    },
+    {
+      id: 3,
+      title: '清单 3',
+      icon: 'i-carbon-menu',
+    }],
+  },
+  {
+    id: 'label',
+    title: '标签',
+    children: [{
+      id: 1,
+      title: '标签 1',
+      icon: 'i-carbon-tag',
+    }],
+  },
+  {
+    id: 'filterer',
+    title: '过滤器',
+    children: [{
+      id: 1,
+      title: '标签 1',
+      icon: 'i-carbon-tag',
+    }],
+  },
+].map((item, index) => ({ ...item, index }))
+
+export const concludedProjectBaseData: ListItemProps[] = [
+  {
+    id: TaskStatus.COMPLETED,
+    title: '已完成',
+    icon: 'i-carbon-checkmark-outline',
+  },
+  {
+    id: TaskStatus.ABANDONED,
+    title: '已放弃',
+    icon: 'i-carbon-close-outline',
+  },
+  {
+    id: TaskStatus.DELETED,
+    title: '垃圾桶',
+    icon: 'i-carbon-trash-can',
   },
 ].map((item, index) => ({ ...item, index }))

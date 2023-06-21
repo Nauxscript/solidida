@@ -39,6 +39,11 @@ export default defineConfig({
         'i-carbon-recently-viewed',
         'i-carbon-user-role',
         'i-carbon-archive',
+        'i-carbon-checkmark-outline',
+        'i-carbon-sunrise',
+        'i-carbon-close-outline',
+        'i-carbon-trash-can',
+        'i-carbon-menu',
       ],
     }),
     AutoImport({

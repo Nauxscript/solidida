@@ -23,7 +23,7 @@ const ListItem: ListItemComProps = (props) => {
   }
   return (
     <li class='group' flex items-center text-sm lh-10 font-normal list-none px-3 rounded cursor-pointer hover:bg-blue-50 classList={{ '!bg-blue-1': currentItem() === props.id }} onClick={handleItemClick}>
-      <i class={props.icon} text-gray-4></i>
+      { props.icon && <i class={props.icon} text-gray-4></i>}
       <div class="content" px-2 flex-1>
         {c()}
       </div>
