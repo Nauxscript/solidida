@@ -44,7 +44,7 @@ export const smartProjectBaseData: ListItemProps[] = [
   },
 ].map((item, index) => ({ ...item, index }))
 
-export const mainProjectBaseData: ListItemProps[] = [
+export const mainProjectBaseData = [
   {
     id: 'detailList',
     title: '清单',
@@ -52,16 +52,19 @@ export const mainProjectBaseData: ListItemProps[] = [
       id: 1,
       title: '清单 1',
       icon: 'i-carbon-menu',
+      index: 0,
     },
     {
       id: 2,
       title: '清单 2',
       icon: 'i-carbon-menu',
+      index: 1,
     },
     {
       id: 3,
       title: '清单 3',
       icon: 'i-carbon-menu',
+      index: 2,
     }],
   },
   {
@@ -71,6 +74,7 @@ export const mainProjectBaseData: ListItemProps[] = [
       id: 1,
       title: '标签 1',
       icon: 'i-carbon-tag',
+      index: 0,
     }],
   },
   {
@@ -80,6 +84,7 @@ export const mainProjectBaseData: ListItemProps[] = [
       id: 1,
       title: '标签 1',
       icon: 'i-carbon-tag',
+      index: 0,
     }],
   },
 ].map((item, index) => ({ ...item, index }))

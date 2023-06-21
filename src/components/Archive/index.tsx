@@ -15,11 +15,13 @@ const Archive = (props: ArchiveProps) => {
         <List data={smartProjects()}></List>
       </section>
       <div h-1px bg-gray-1 mx-2 my-2></div>
-      <div class="mainProjectView">
+      <div class="mainProjectView" flex-col-box w-full px-2 box-border>
         {
           mainProjects().map(item => (
             <>
-              <ToggleButton {...item}>{item.title}</ToggleButton>
+              <ToggleButton {...item}>
+                <List data={item.children}></List>
+              </ToggleButton>
             </>
           ))
         }

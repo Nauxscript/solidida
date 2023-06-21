@@ -44,6 +44,7 @@ export default defineConfig({
         'i-carbon-close-outline',
         'i-carbon-trash-can',
         'i-carbon-menu',
+        'i-carbon-tag',
       ],
     }),
     AutoImport({
