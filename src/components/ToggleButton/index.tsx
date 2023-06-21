@@ -12,16 +12,17 @@ export interface ToggleButtonProps {
 type ToggleButtonComProps = ParentComponent<ToggleButtonProps>
 
 const ToggleButton: ToggleButtonComProps = (props) => {
+  const [expanded, setExpanded] = createSignal<boolean>(!!props.expanded)
   const c = children(() => props.children)
   return (
     <>
-      <div class='group' flex items-center text-sm lh-8 font-normal list-none pl-0 pr-3 rounded cursor-pointer hover:bg-blue-50 text-gray-7>
-        <i class={ props.expanded ? 'i-carbon-chevron-down' : 'i-carbon-chevron-right'} invisible group-hover:visible text-gray-4></i>
+      <div class='group' flex items-center text-sm lh-8 font-normal list-none pl-0 pr-3 rounded cursor-pointer hover:bg-blue-50 text-gray-7 onClick={() => setExpanded(!expanded())}>
+        <i class={ expanded() ? 'i-carbon-chevron-down' : 'i-carbon-chevron-right'} invisible group-hover:visible text-gray-4></i>
         <div class="content" flex-1>
           {props.title}
         </div>
       </div>
-      <div>
+      <div classList={{ hidden: !expanded() }}>
         {c()}
       </div>
     </>
