@@ -12,7 +12,7 @@ export interface ListItemProps {
 
 type ListItemComProps = ParentComponent<ListItemProps>
 
-const itemIcon = (icon: string) => <i class={`${icon}`}></i>
+const itemIcon = (icon: string) => <i class={icon} ></i>
 
 const ListItem: ListItemComProps = (props) => {
   const c = children(() => props.children)

@@ -1,5 +1,6 @@
 import MainLayout from '@/layouts/MainLayout'
 import Editor from '@/components/Editor/index'
+import Archive from '@/components/Archive/index'
 
 export default function Home() {
   const handleEditorContentChange = (content: string) => {
@@ -7,6 +8,6 @@ export default function Home() {
     console.log(content)
   }
   return (
-    <MainLayout editor={<Editor onChange={handleEditorContentChange} />}></MainLayout>
+    <MainLayout archive={<Archive></Archive>} editor={<Editor onChange={handleEditorContentChange} />}></MainLayout>
   )
 }
