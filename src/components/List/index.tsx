@@ -16,13 +16,13 @@ const List = (props: ListProps) => {
     },
   }))
   return (
-      <ul class="" w-full m-0 px-2 pt-2 box-border text-gray-7>
-        {
-          data.map(item => (
-            <ListItem {...item} activeKey={props.activeKey}>{item.title}</ListItem>
-          ))
-        }
-      </ul>
+    <ul class="" w-full m-0 px-2 pt-2 box-border text-gray-7>
+      {
+        data.map(item => (
+          <ListItem {...item} activeKey={props.activeKey}>{item.title}</ListItem>
+        ))
+      }
+    </ul>
   )
 }
 

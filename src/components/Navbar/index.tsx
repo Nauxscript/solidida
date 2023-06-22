@@ -2,24 +2,25 @@ import { A } from 'solid-start'
 
 interface NavRouteItem {
   icon: string
-  to: string
+  to?: string
   styles?: string
 }
 
 const routes: NavRouteItem[] = [{
   icon: 'i-carbon-checkbox-checked',
-  to: '',
+  to: '/',
 }, {
   icon: 'i-carbon-calendar-heat-map',
-  to: '',
+  to: '/about',
 }, {
   icon: 'i-carbon-task-complete',
-  to: '',
+  to: '/habit',
 }, {
   icon: 'i-carbon-search',
-  to: '',
   styles: '!text-4 ml-1',
 }]
+
+const getIcon = (icon: string, isLink: boolean, styles?: string) => <i flex text-5 hover:text-gray-7 class={`${icon} ${styles || ''} ${!isLink ? 'text-gray' : ''}`}></i>
 
 export default function Navbar() {
   return (
@@ -28,10 +29,16 @@ export default function Navbar() {
         <div i-carbon-user-filled inline-block="" text-5 ></div>
       </div>
       <div class="tool-bar" flex-col-box flex-1 items-center justify-between>
-        <ul class="routes" p-0 flex-col-box>
+        <ul class="routes" p-0 flex-col-box list-none>
           {
             routes.map(item => (
-              <li class={`${item.icon} ${item.styles}`} text-5 text-gray hover:text-dark my-2 cursor-pointer></li>
+              <li my-2 cursor-pointer>
+                <Show when={item.to !== undefined} fallback={() => getIcon(item.icon, false, item.styles)}>
+                  <A href={item.to!} end={true} inactiveClass='text-gray' activeClass='text-dark'>
+                    {getIcon(item.icon, true, item.styles)}
+                  </A>
+                </Show>
+              </li>
             ))
           }
         </ul>

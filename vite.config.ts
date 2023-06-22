@@ -45,6 +45,10 @@ export default defineConfig({
         'i-carbon-trash-can',
         'i-carbon-menu',
         'i-carbon-tag',
+
+        // dynamic style
+        'text-dark',
+        'text-gray',
       ],
     }),
     AutoImport({
