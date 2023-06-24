@@ -13,7 +13,7 @@ export default defineConfig({
     setupFiles: ['node_modules/@testing-library/jest-dom/extend-expect', './setupVitest.js'],
     transformMode: { web: [/\.[jt]sx?$/] },
   },
-  // resolve: {
-  //   conditions: ['development', 'browser'],
-  // },
+  resolve: {
+    conditions: ['development', 'browser'],
+  },
 })
