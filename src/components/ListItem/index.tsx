@@ -1,4 +1,5 @@
 import type { ParentComponent } from 'solid-js'
+import { children } from 'solid-js'
 
 export type ListItemId = string | number
 export interface ListItemProps {
@@ -15,7 +16,7 @@ export interface ListItemProps {
 type ListItemComProps = ParentComponent<ListItemProps>
 
 const ListItem: ListItemComProps = (props) => {
-  const c = children(() => props.children)
+  const c = children(() => props.children || props.title)
   const handleItemClick = (e: MouseEvent) => {
     props.itemClick?.(props.id, props.index, e)
   }
