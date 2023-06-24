@@ -24,7 +24,7 @@ export const navItems: NavRouteItem[] = [{
 
 export default function Navbar() {
   const navigate = useNavigate()
-  const [currHref, setCurrHref] = createSignal('/')
+  const [currHref, setCurrHref] = createSignal(location.pathname)
   const handleNavigate = (href: string) => {
     setCurrHref(href)
     navigate(href)
