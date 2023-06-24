@@ -35,10 +35,10 @@ export default function Navbar() {
         <div i-carbon-user-filled inline-block="" text-5 ></div>
       </div>
       <div class="tool-bar" flex-col-box flex-1 items-center justify-between>
-        <ul role='list' class="routes" p-0 flex-col-box list-none>
+        <ul class="routes" p-0 flex-col-box list-none>
           {
             navItems.map(item => (
-              <li role='listitem' classList={{ [item.icon]: true, '!text-dark': currHref() === item.href, '!text-4 ml-1': !item.href }} my-2 cursor-pointer text-5 text-gray hover:text-gray-7 onClick={() => item.href && handleNavigate(item.href)}></li>
+              <li classList={{ [item.icon]: true, '!text-dark': currHref() === item.href, '!text-4 ml-1': !item.href }} my-2 cursor-pointer text-5 text-gray hover:text-gray-7 onClick={() => item.href && handleNavigate(item.href)}></li>
             ))
           }
         </ul>

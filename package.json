@@ -38,6 +38,7 @@
 		"vitest": "^0.28.5"
 	},
 	"dependencies": {
+		"@testing-library/user-event": "^14.4.3",
 		"ink-mde": "^0.25.1",
 		"solid-js": "^1.6.10"
 	}

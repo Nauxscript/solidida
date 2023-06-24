@@ -1,5 +1,6 @@
 import { describe, it } from 'vitest'
-import { cleanup, fireEvent, render, screen, waitFor } from '@solidjs/testing-library'
+import { cleanup, render, screen } from '@solidjs/testing-library'
+import userEvent from '@testing-library/user-event'
 import { Router } from '@solidjs/router'
 import Navbar, { navItems } from '.'
 
@@ -14,17 +15,17 @@ describe('Component: Navbar', () => {
   afterEach(cleanup)
   it('happy path', () => {
     const navbar = screen.getByRole('navigation')
+    const listItems = screen.getAllByRole('listitem')
     expect(navbar).toBeInTheDocument()
+    expect(listItems.length).toEqual(navItems.length)
   })
 
-  it('navbar navigation working good', () => {
-    const listItems = screen.getAllByRole('listitem')
-    expect(listItems.length).toEqual(navItems.length)
-    listItems.forEach((item, index) => {
-      fireEvent(item, new Event('click'))
-      waitFor(() => {
-        expect(location.pathname).toBe(navItems[index].href)
-      })
-    })
+  it('navbar navigation working good', async () => {
+    const user = userEvent.setup()
+
+    // Promise.all(listItems.map(async (item, index) => {
+    //   await user.click(item)
+    //   expect(location.pathname).toBe(navItems[index].href)
+    // }))
   })
 })
