@@ -1,28 +1,33 @@
 import { A } from 'solid-start'
+import { useNavigate } from '@solidjs/router'
 
 interface NavRouteItem {
   icon: string
-  to?: string
+  href?: string
   styles?: string
 }
 
 const routes: NavRouteItem[] = [{
   icon: 'i-carbon-checkbox-checked',
-  to: '/',
+  href: '/',
 }, {
   icon: 'i-carbon-calendar-heat-map',
-  to: '/about',
+  href: '/about',
 }, {
   icon: 'i-carbon-task-complete',
-  to: '/habit',
+  href: '/habit',
 }, {
   icon: 'i-carbon-search',
   styles: '!text-4 ml-1',
 }]
 
-const getIcon = (icon: string, isLink: boolean, styles?: string) => <i flex text-5 hover:text-gray-7 class={`${icon} ${styles || ''} ${!isLink ? 'text-gray' : ''}`}></i>
-
 export default function Navbar() {
+  const navigate = useNavigate()
+  const [currHref, setCurrHref] = createSignal('/')
+  const handleNavigate = (href: string) => {
+    setCurrHref(href)
+    navigate(href)
+  }
   return (
     <div h-full w-12 bg-blue-1 flex-col-box>
       <div class="user" flex-both-center bg-gray-2 w-8 h-8 mx-2 my-6 rounded text-gray-3 hover:text-gray-5 cursor-pointer>
@@ -32,13 +37,7 @@ export default function Navbar() {
         <ul class="routes" p-0 flex-col-box list-none>
           {
             routes.map(item => (
-              <li my-2 cursor-pointer>
-                <Show when={item.to !== undefined} fallback={() => getIcon(item.icon, false, item.styles)}>
-                  <A href={item.to!} end={true} inactiveClass='text-gray' activeClass='text-dark'>
-                    {getIcon(item.icon, true, item.styles)}
-                  </A>
-                </Show>
-              </li>
+              <li classList={{ [item.icon]: true, '!text-dark': currHref() === item.href, '!text-4 ml-1': !item.href }} my-2 cursor-pointer text-5 text-gray hover:text-gray-7 onClick={() => item.href && handleNavigate(item.href)}></li>
             ))
           }
         </ul>
