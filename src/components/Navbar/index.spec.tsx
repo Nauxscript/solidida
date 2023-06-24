@@ -3,7 +3,7 @@ import { cleanup, fireEvent, render, screen, waitFor } from '@solidjs/testing-li
 import { Router } from '@solidjs/router'
 import Navbar, { navItems } from '.'
 
-describe('Navbar component', () => {
+describe('Component: Navbar', () => {
   beforeEach(() => {
     render(() => (
       <Router>
