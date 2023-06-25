@@ -5,6 +5,8 @@ import { Router } from '@solidjs/router'
 import Navbar, { navItems } from '.'
 
 describe('Component: Navbar', () => {
+  // bug of happy-dom https://github.com/capricorn86/happy-dom/issues/868; This step is not necessary in jsdom.
+  // location.assign('https://localhost')
   beforeEach(() => {
     render(() => (
       <Router>
