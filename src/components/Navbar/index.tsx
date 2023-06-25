@@ -3,21 +3,26 @@ import { A } from 'solid-start'
 import { useNavigate } from '@solidjs/router'
 
 interface NavRouteItem {
+  name: string
   icon: string
   href?: string
   styles?: string
 }
 
 export const navItems: NavRouteItem[] = [{
+  name: 'home',
   icon: 'i-carbon-checkbox-checked',
   href: '/',
 }, {
+  name: 'calendar',
   icon: 'i-carbon-calendar-heat-map',
-  href: '/about',
+  href: '/calendar',
 }, {
+  name: 'habit',
   icon: 'i-carbon-task-complete',
   href: '/habit',
 }, {
+  name: 'search',
   icon: 'i-carbon-search',
   styles: '!text-4 ml-1',
 }]
@@ -38,7 +43,7 @@ export default function Navbar() {
         <ul class="routes" p-0 flex-col-box list-none>
           {
             navItems.map(item => (
-              <li classList={{ [item.icon]: true, '!text-dark': currHref() === item.href, '!text-4 ml-1': !item.href }} my-2 cursor-pointer text-5 text-gray hover:text-gray-7 onClick={() => item.href && handleNavigate(item.href)}></li>
+              <li data-testid={item.name} classList={{ [item.icon]: true, '!text-dark': currHref() === item.href, '!text-4 ml-1': !item.href }} my-2 cursor-pointer text-5 text-gray hover:text-gray-7 onClick={() => item.href && handleNavigate(item.href)}></li>
             ))
           }
         </ul>

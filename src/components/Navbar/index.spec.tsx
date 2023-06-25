@@ -12,7 +12,10 @@ describe('Component: Navbar', () => {
       </Router>
     ))
   })
-  afterEach(cleanup)
+  afterEach(() => {
+    cleanup()
+    window.history.pushState({}, '', '/')
+  })
   it('happy path', () => {
     const navbar = screen.getByRole('navigation')
     const listItems = screen.getAllByRole('listitem')
@@ -20,12 +23,31 @@ describe('Component: Navbar', () => {
     expect(listItems.length).toEqual(navItems.length)
   })
 
-  it('navbar navigation working good', async () => {
+  it('go to home page', async () => {
+    const ele = screen.getByTestId('home')
     const user = userEvent.setup()
+    await user.click(ele)
+    expect(location.pathname).toBe('/')
+  })
 
-    // Promise.all(listItems.map(async (item, index) => {
-    //   await user.click(item)
-    //   expect(location.pathname).toBe(navItems[index].href)
-    // }))
+  it('go to calendar page', async () => {
+    const ele = screen.getByTestId('calendar')
+    const user = userEvent.setup()
+    await user.click(ele)
+    expect(location.pathname).toBe('/calendar')
+  })
+
+  it('go to habit page', async () => {
+    const ele = screen.getByTestId('habit')
+    const user = userEvent.setup()
+    await user.click(ele)
+    expect(location.pathname).toBe('/habit')
+  })
+
+  it('show search dialog', async () => {
+    const ele = screen.getByTestId('search')
+    const user = userEvent.setup()
+    await user.click(ele)
+    expect(location.pathname).toBe('/')
   })
 })
