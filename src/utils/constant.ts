@@ -26,6 +26,7 @@ export const smartProjectBaseData: ListItemProps[] = [
     id: SmartProjectKeys.TOMORROW,
     title: '明天',
     icon: 'i-carbon-sunrise',
+    hasTool: true,
   },
   {
     id: SmartProjectKeys.SEVENDAYS,
