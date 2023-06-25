@@ -13,6 +13,8 @@ export interface ListItemProps {
   itemClick?: (id: ListItemProps['id'], index: number, event: MouseEvent) => void
 }
 
+export const toolBtnIcon = 'i-carbon-overflow-menu-horizontal'
+
 type ListItemComProps = ParentComponent<ListItemProps>
 
 const ListItem: ListItemComProps = (props) => {
@@ -27,7 +29,7 @@ const ListItem: ListItemComProps = (props) => {
         {c()}
       </div>
       <span classList={{ 'group-hover:hidden': props.hasTool, 'flex': props.count !== undefined }} text-gray-4 px-2 >{props.count}</span>
-      <i classList={{ 'group-hover:flex': props.hasTool }} hidden text-gray-4 hover:text-gray-5 i-carbon-overflow-menu-horizontal text-5></i>
+      <i classList={{ 'group-hover:flex': props.hasTool, [toolBtnIcon]: true }} hidden text-gray-4 hover:text-gray-5 text-5></i>
     </li>
   )
 }

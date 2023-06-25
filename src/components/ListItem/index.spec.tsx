@@ -2,7 +2,7 @@ import { describe, vi } from 'vitest'
 import { cleanup, render, screen } from '@solidjs/testing-library'
 import userEvent from '@testing-library/user-event'
 import type { ListItemProps } from '.'
-import ListItem from '.'
+import ListItem, { toolBtnIcon } from '.'
 
 describe('Component: ListItem', () => {
   afterEach(cleanup)
@@ -22,5 +22,38 @@ describe('Component: ListItem', () => {
     await user.click(ele)
 
     expect(itemClick).toBeCalledTimes(1)
+  })
+
+  it('list item with icon', () => {
+    const itemProps: ListItemProps = {
+      id: 1,
+      index: 0,
+      title: 'list item with icon',
+      icon: 'test-icon',
+    }
+    render(() => <ListItem {...itemProps}></ListItem>)
+    const ele = screen.getByRole('listitem')
+    expect(ele).toBeInTheDocument()
+    const iconEle = ele.querySelector('.test-icon')
+    expect(iconEle).toBeInTheDocument()
+  })
+
+  it('list item with tool button', async () => {
+    const user = userEvent.setup()
+    const itemProps: ListItemProps = {
+      id: 1,
+      index: 0,
+      title: 'list item with icon',
+      hasTool: true,
+    }
+    render(() => <ListItem {...itemProps}></ListItem>)
+    const ele = screen.getByRole('listitem')
+    expect(ele).toBeInTheDocument()
+    const toolBtn = ele.querySelector(`.${toolBtnIcon}`) as HTMLElement
+    // eslint-disable-next-line no-console
+    console.dir(toolBtn)
+    expect(toolBtn).not.toBeVisible()
+    await user.hover(ele)
+    expect(toolBtn).toBeVisible()
   })
 })
