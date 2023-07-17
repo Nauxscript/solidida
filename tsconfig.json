@@ -19,7 +19,7 @@
       "@/*": ["src/*"]
     }
   },
-  "types": ["vitest"],
+  "types": ["vitest", "vite/client"],
   "include": ["./**/*.ts", "./**/*.tsx", "./**/*.js", "./**/*.jsx"],
   "exclude": ["node_modules", "**/node_modules/*", "dist"]
 }
