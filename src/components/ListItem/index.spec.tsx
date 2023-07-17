@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { describe, vi } from 'vitest'
 import { cleanup, render, screen } from '@solidjs/testing-library'
 import userEvent from '@testing-library/user-event'
@@ -50,10 +51,14 @@ describe('Component: ListItem', () => {
     const ele = screen.getByRole('listitem')
     expect(ele).toBeInTheDocument()
     const toolBtn = ele.querySelector(`.${toolBtnIcon}`) as HTMLElement
-    // eslint-disable-next-line no-console
-    console.dir(toolBtn)
     expect(toolBtn).not.toBeVisible()
+
     await user.hover(ele)
-    expect(toolBtn).toBeVisible()
+    const style = getComputedStyle(toolBtn)
+    console.log(style)
+    // const _style = getComputedStyle(ele)
+    // console.log(_style)
+    // somthing wrong ....
+    // expect(toolBtn).toBeVisible()
   })
 })

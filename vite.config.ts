@@ -14,11 +14,13 @@ export default defineConfig({
       registerNodeLoader: true,
       inline: [/solid-js/],
     },
-    // environment: 'happy-dom',
-    environment: 'jsdom',
+    // https://github.com/capricorn86/happy-dom/issues/994
+    environment: 'happy-dom',
+    // environment: 'jsdom',
     globals: true,
     setupFiles: ['node_modules/@testing-library/jest-dom/extend-expect', './setupVitest.js'],
     transformMode: { web: [/\.[jt]sx?$/] },
+    // css: true,
   },
   resolve: {
     alias: {

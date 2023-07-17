@@ -28,8 +28,8 @@ const ListItem: ListItemComProps = (props) => {
       <div class="content" px-2 flex-1>
         {c()}
       </div>
-      <span classList={{ 'group-hover:hidden': props.hasTool, 'flex': props.count !== undefined }} text-gray-4 px-2 >{props.count}</span>
-      <i classList={{ 'group-hover:flex': props.hasTool, [toolBtnIcon]: true }} hidden text-gray-4 hover:text-gray-5 text-5></i>
+      <span data-testid='ttt' classList={{ 'group-hover:hidden': props.hasTool, 'flex': props.count !== undefined }} text-gray-4 px-2 >{props.count}</span>
+      <i classList={{ 'group-hover:!flex': props.hasTool, [toolBtnIcon]: true }} hidden text-gray-4 hover:text-gray-5 text-5></i>
     </li>
   )
 }
