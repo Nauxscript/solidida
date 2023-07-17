@@ -9,10 +9,22 @@ import vercelAdapter from 'solid-start-vercel'
 // import staticAdapter from 'solid-start-static'
 
 export default defineConfig({
+  test: {
+    deps: {
+      registerNodeLoader: true,
+      inline: [/solid-js/],
+    },
+    // environment: 'happy-dom',
+    environment: 'jsdom',
+    globals: true,
+    setupFiles: ['node_modules/@testing-library/jest-dom/extend-expect', './setupVitest.js'],
+    transformMode: { web: [/\.[jt]sx?$/] },
+  },
   resolve: {
     alias: {
       '@': `${path.resolve(__dirname, 'src')}`,
     },
+    conditions: ['development', 'browser'],
   },
   plugins: [
     Solid({
