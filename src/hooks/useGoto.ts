@@ -12,3 +12,7 @@ export const useGoto = () => {
     currHref,
   }
 }
+
+export const GITHUB_URL = 'https://github.com/Nauxscript/solidida'
+
+export const goToGithub = () => window.open(GITHUB_URL)
