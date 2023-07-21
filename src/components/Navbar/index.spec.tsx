@@ -1,10 +1,12 @@
-import { describe, it } from 'vitest'
-import { cleanup, render, screen } from '@solidjs/testing-library'
+import { describe, it, vi } from 'vitest'
+import { cleanup, render, renderHook, screen } from '@solidjs/testing-library'
 import userEvent from '@testing-library/user-event'
 import { Router } from '@solidjs/router'
-import Navbar, { navItems } from '.'
+import { showSearchPanel, useSearch } from '../Command/useSearch'
+import Navbar, { goToGithub, navItems, useGoto } from '.'
 
-describe('Component: Navbar', () => {
+// abandoned tests for reference
+describe.skip('Component: Navbar', () => {
   // bug of happy-dom https://github.com/capricorn86/happy-dom/issues/868; This step is not necessary in jsdom.
   // location.assign('https://localhost')
   beforeEach(() => {
@@ -51,5 +53,38 @@ describe('Component: Navbar', () => {
     const user = userEvent.setup()
     await user.click(ele)
     expect(location.pathname).toBe('/')
+  })
+})
+
+describe('Navbar', () => {
+  beforeEach(() => {
+    window.history.pushState({}, '', '/')
+  })
+  test('useGoto', () => {
+    const { result, cleanup } = renderHook(useGoto, {
+      wrapper: Router,
+    })
+    const { currHref, handleNavigate } = result
+
+    navItems.forEach((item) => {
+      handleNavigate(item.href)
+      expect(currHref()).toBe(item.href)
+    })
+
+    cleanup()
+  })
+
+  test('goToGithub', () => {
+    window.open = vi.fn()
+    goToGithub()
+    expect(window.open).toBeCalledWith('https://github.com/Nauxscript/solidida')
+  })
+
+  test('search panel', () => {
+    const { openSearchPanel, closeSearchPanel } = useSearch()
+    openSearchPanel()
+    expect(showSearchPanel()).toBe(true)
+    closeSearchPanel()
+    expect(showSearchPanel()).toBe(false)
   })
 })
