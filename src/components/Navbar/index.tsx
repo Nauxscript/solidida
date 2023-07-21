@@ -1,24 +1,10 @@
-import { useNavigate } from '@solidjs/router'
 import { useSearch } from '../Command/useSearch'
+import { useGoto } from '@/hooks/useGoto'
 
 interface NavRouteItem {
   name: string
   icon: string
   href: string
-}
-
-export const useGoto = () => {
-  const navigate = useNavigate()
-  const [currHref, setCurrHref] = createSignal(location.pathname)
-  const handleNavigate = (href: string) => {
-    setCurrHref(href)
-    navigate(href)
-  }
-
-  return {
-    handleNavigate,
-    currHref,
-  }
 }
 
 export const goToGithub = () => window.open('https://github.com/Nauxscript/solidida')

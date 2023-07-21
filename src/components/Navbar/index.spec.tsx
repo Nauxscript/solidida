@@ -3,7 +3,8 @@ import { cleanup, render, renderHook, screen } from '@solidjs/testing-library'
 import userEvent from '@testing-library/user-event'
 import { Router } from '@solidjs/router'
 import { showSearchPanel, useSearch } from '../Command/useSearch'
-import Navbar, { goToGithub, navItems, useGoto } from '.'
+import Navbar, { goToGithub, navItems } from '.'
+import { useGoto } from '@/hooks/useGoto'
 
 // abandoned tests for reference
 describe.skip('Component: Navbar', () => {
