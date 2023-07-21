@@ -1,7 +1,7 @@
 import { createSignal } from 'solid-js'
 const [showSearchPanel, setShowSearchPanel] = createSignal(false)
 
-export const useSearch = () => {
+export const useCommandModal = () => {
   const openSearchPanel = () => {
     setShowSearchPanel(true)
   }
