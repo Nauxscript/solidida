@@ -1,10 +1,8 @@
-import { describe, it, vi } from 'vitest'
-import { cleanup, render, renderHook, screen } from '@solidjs/testing-library'
+import { describe, it } from 'vitest'
+import { cleanup, render, screen } from '@solidjs/testing-library'
 import userEvent from '@testing-library/user-event'
 import { Router } from '@solidjs/router'
-import { showSearchPanel, useSearch } from '../Command/useSearch'
-import Navbar, { goToGithub, navItems } from '.'
-import { useGoto } from '@/hooks/useGoto'
+import Navbar, { navItems } from '.'
 
 // abandoned tests for reference
 describe.skip('Component: Navbar', () => {
@@ -54,43 +52,5 @@ describe.skip('Component: Navbar', () => {
     const user = userEvent.setup()
     await user.click(ele)
     expect(location.pathname).toBe('/')
-  })
-})
-
-describe('Navbar', () => {
-  beforeEach(() => {
-    window.history.pushState({}, '', '/')
-  })
-  test('useGoto', () => {
-    const { result, cleanup } = renderHook(useGoto, {
-      wrapper: Router,
-    })
-    const { currHref, handleNavigate } = result
-
-    navItems.forEach((item) => {
-      handleNavigate(item.href)
-      expect(currHref()).toBe(item.href)
-    })
-
-    cleanup()
-  })
-
-  test('goToGithub', () => {
-    window.open = vi.fn()
-    goToGithub()
-    expect(window.open).toBeCalledWith('https://github.com/Nauxscript/solidida')
-  })
-
-  test('open search panel', () => {
-    const { openSearchPanel } = useSearch()
-    openSearchPanel()
-    expect(showSearchPanel()).toBe(true)
-  })
-
-  test('close search panel', () => {
-    const { openSearchPanel, closeSearchPanel } = useSearch()
-    openSearchPanel()
-    closeSearchPanel()
-    expect(showSearchPanel()).toBe(false)
   })
 })

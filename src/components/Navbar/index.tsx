@@ -1,13 +1,11 @@
-import { useSearch } from '../Command/useSearch'
-import { useGoto } from '@/hooks/useGoto'
+import { useCommandModal } from '../Command'
+import { goToGithub, useGoto } from '@/hooks/useGoto'
 
 interface NavRouteItem {
   name: string
   icon: string
   href: string
 }
-
-export const goToGithub = () => window.open('https://github.com/Nauxscript/solidida')
 
 export const navItems: NavRouteItem[] = [{
   name: 'home',
@@ -25,7 +23,7 @@ export const navItems: NavRouteItem[] = [{
 
 export default function Navbar() {
   const { currHref, handleNavigate } = useGoto()
-  const { openSearchPanel } = useSearch()
+  const { openSearchPanel } = useCommandModal()
   return (
     <nav h-full w-12 bg-blue-1 flex-col-box>
       <div class="user" flex-both-center bg-gray-2 w-8 h-8 mx-2 my-6 rounded text-gray-3 hover:text-gray-5 cursor-pointer>
