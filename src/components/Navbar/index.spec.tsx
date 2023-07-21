@@ -81,10 +81,15 @@ describe('Navbar', () => {
     expect(window.open).toBeCalledWith('https://github.com/Nauxscript/solidida')
   })
 
-  test('search panel', () => {
-    const { openSearchPanel, closeSearchPanel } = useSearch()
+  test('open search panel', () => {
+    const { openSearchPanel } = useSearch()
     openSearchPanel()
     expect(showSearchPanel()).toBe(true)
+  })
+
+  test('close search panel', () => {
+    const { openSearchPanel, closeSearchPanel } = useSearch()
+    openSearchPanel()
     closeSearchPanel()
     expect(showSearchPanel()).toBe(false)
   })
