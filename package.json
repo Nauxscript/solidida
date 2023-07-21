@@ -41,6 +41,7 @@
 	"dependencies": {
 		"@testing-library/user-event": "^14.4.3",
 		"ink-mde": "^0.25.1",
-		"solid-js": "^1.6.10"
+		"solid-js": "^1.6.10",
+		"unplugin-icons": "^0.16.5"
 	}
 }
