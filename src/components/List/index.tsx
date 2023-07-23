@@ -1,29 +1,12 @@
-import type { ListItemId, ListItemProps } from '../ListItem'
-import ListItem from '../ListItem'
+import { ListItem as Item } from './ListItem'
+import { ListRoot as Root } from './ListRoot'
+import type { ListItemProps } from './ListItem'
 
-interface ListProps {
-  data: ListItemProps[]
-  activeKey?: ListItemId
-  itemClick?: (id: ListItemId) => void
+export type {
+  ListItemProps,
 }
 
-const List = (props: ListProps) => {
-  const data = props.data.map((item, index) => ({
-    ...item,
-    index,
-    itemClick: (id: ListItemId) => {
-      props.itemClick?.(id)
-    },
-  }))
-  return (
-    <ul class="" w-full m-0 px-2 pt-2 box-border text-gray-7>
-      {
-        data.map(item => (
-          <ListItem {...item} activeKey={props.activeKey}>{item.title}</ListItem>
-        ))
-      }
-    </ul>
-  )
+export default {
+  Item,
+  Root,
 }
-
-export default List
