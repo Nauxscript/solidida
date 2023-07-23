@@ -1,5 +1,5 @@
 import { useCommandModal } from '../Command'
-import { useGoto } from '@/hooks/useGoto'
+import { goToGithub, useGoto } from '@/hooks/useGoto'
 
 interface NavRouteItem {
   name: string
@@ -30,7 +30,7 @@ export default function Navbar() {
         <div i-carbon-user-filled inline-block="" text-5 ></div>
       </div>
       <div class="tool-bar" flex-col-box flex-1 items-center justify-between>
-        {/* <ul class="routes" p-0 flex-col-box list-none h-full>
+        <ul class="routes" p-0 flex-col-box list-none h-full>
           {
             navItems.map(item => (
               <li classList={{ [item.icon]: true, '!text-dark': currHref() === item.href }} my-2 cursor-pointer text-5 text-gray hover:text-gray-7 onClick={() => { handleNavigate(item.href) }}></li>
@@ -38,7 +38,7 @@ export default function Navbar() {
           }
           <li i-carbon-search my-2 ml-1 cursor-pointer text-4 text-gray hover:text-gray-7 onClick={openSearchPanel}></li>
           <li i-carbon-logo-github text-5 text-gray hover:text-dark my-2 cursor-pointer mt-auto onClick={goToGithub}></li>
-        </ul> */}
+        </ul>
       </div>
     </nav>
   )
