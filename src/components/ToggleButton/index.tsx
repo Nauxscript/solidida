@@ -1,8 +1,8 @@
-import { type ParentComponent, children } from 'solid-js'
+import type { Accessor, ParentComponent } from 'solid-js'
 
 export interface ToggleButtonProps {
   id: string | number
-  index: number
+  index: number | Accessor<number>
   title: string
   expanded?: boolean
   hasTool?: boolean
@@ -13,7 +13,6 @@ type ToggleButtonComProps = ParentComponent<ToggleButtonProps>
 
 const ToggleButton: ToggleButtonComProps = (props) => {
   const [expanded, setExpanded] = createSignal<boolean>(!!props.expanded)
-  const c = children(() => props.children)
   const handleSuffixClick = (e: MouseEvent) => {
     e.stopPropagation()
   }
@@ -29,7 +28,7 @@ const ToggleButton: ToggleButtonComProps = (props) => {
         </div>
       </div>
       <div classList={{ hidden: !expanded() }}>
-        {c()}
+        {props.children}
       </div>
     </>
   )
