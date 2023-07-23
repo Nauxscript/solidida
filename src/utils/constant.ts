@@ -1,5 +1,3 @@
-import type { ListItemProps } from '@/components/ListItem'
-
 enum SmartProjectKeys {
   TODAY = 'TODAY',
   TOMORROW = 'TOMORROW',
@@ -14,12 +12,12 @@ enum TaskStatus {
   ABANDONED = 'ABANDONED',
 }
 
-export const smartProjectBaseData: ListItemProps[] = [
+export const smartProjectBaseData = [
   {
     id: SmartProjectKeys.TODAY,
     title: '今天',
     icon: 'i-carbon-calendar',
-    hasTool: true,
+    showOption: true,
     count: 2,
   },
   {
@@ -43,7 +41,7 @@ export const smartProjectBaseData: ListItemProps[] = [
     title: '收集箱',
     icon: 'i-carbon-archive',
   },
-].map((item, index) => ({ ...item, index }))
+]
 
 export const mainProjectBaseData = [
   {
@@ -88,9 +86,9 @@ export const mainProjectBaseData = [
       index: 0,
     }],
   },
-].map((item, index) => ({ ...item, index }))
+]
 
-export const concludedProjectBaseData: ListItemProps[] = [
+export const concludedProjectBaseData = [
   {
     id: TaskStatus.COMPLETED,
     title: '已完成',
@@ -106,4 +104,4 @@ export const concludedProjectBaseData: ListItemProps[] = [
     title: '垃圾桶',
     icon: 'i-carbon-trash-can',
   },
-].map((item, index) => ({ ...item, index }))
+]
