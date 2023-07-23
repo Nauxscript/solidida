@@ -5,6 +5,7 @@ declare module 'solid-js' {
     interface HTMLAttributes<T> extends AttributifyAttributes {
       flex?: boolean
       rounded?: boolean
+      invisible?: boolean
     }
   }
 }
