@@ -1,4 +1,4 @@
-enum SmartProjectKeys {
+export enum SmartProjectKeys {
   TODAY = 'TODAY',
   TOMORROW = 'TOMORROW',
   SEVENDAYS = 'SEVENDAYS',

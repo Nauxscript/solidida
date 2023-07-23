@@ -2,7 +2,7 @@
 import List from '../List'
 import type { ListItemId } from '../ListItem'
 import ToggleButton from '../ToggleButton'
-import { concludedProjectBaseData, mainProjectBaseData, smartProjectBaseData } from '@/utils/constant'
+import { SmartProjectKeys, concludedProjectBaseData, mainProjectBaseData, smartProjectBaseData } from '@/utils/constant'
 
 interface ArchiveProps {
 }
@@ -12,7 +12,7 @@ const Archive = (props: ArchiveProps) => {
   const [concludedProjects, updateConcludedProjects] = createSignal(concludedProjectBaseData)
   const [mainProjects, updateMainProjects] = createSignal(mainProjectBaseData)
 
-  const [activedKey, setActivedKey] = createSignal<ListItemId>('')
+  const [activedKey, setActivedKey] = createSignal<ListItemId>(SmartProjectKeys.TODAY)
 
   const handleSelect = (key: number | string) => {
     // eslint-disable-next-line no-console
@@ -25,7 +25,7 @@ const Archive = (props: ArchiveProps) => {
       <section>
         <List.Root onSelect={handleSelect} activedKey={activedKey}>
           <For each={smartProjects()} fallback={'loading'}>
-            {item => (<List.Item icon={item.icon} showOption={item.showOption} count={item.count}>{item.title}</List.Item>)}
+            {item => (<List.Item icon={item.icon} showOption={item.showOption} count={item.count} id={item.id}>{item.title}</List.Item>)}
           </For>
         </List.Root>
 
