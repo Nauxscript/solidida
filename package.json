@@ -17,7 +17,7 @@
 		"@antfu/eslint-config": "^0.35.1",
 		"@iconify-json/carbon": "^1.1.16",
 		"@solidjs/meta": "^0.28.2",
-		"@solidjs/router": "^0.7.0",
+		"@solidjs/router": "^0.8.2",
 		"@solidjs/testing-library": "^0.6.0",
 		"@testing-library/jest-dom": "^5.16.5",
 		"@types/testing-library__jest-dom": "^5.14.5",
@@ -27,7 +27,7 @@
 		"eslint": "^8.33.0",
 		"happy-dom": "^9.20.3",
 		"jsdom": "^21.1.0",
-		"solid-start": "^0.2.18",
+		"solid-start": "^0.2.27",
 		"solid-start-node": "^0.2.18",
 		"solid-start-static": "^0.2.18",
 		"solid-start-vercel": "^0.2.18",
@@ -39,9 +39,10 @@
 		"vitest": "^0.28.5"
 	},
 	"dependencies": {
+		"@kobalte/core": "^0.9.8",
 		"@testing-library/user-event": "^14.4.3",
 		"ink-mde": "^0.25.1",
-		"solid-js": "^1.6.10",
+		"solid-js": "^1.7.8",
 		"unplugin-icons": "^0.16.5"
 	}
 }
