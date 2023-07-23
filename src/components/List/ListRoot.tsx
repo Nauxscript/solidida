@@ -1,10 +1,11 @@
-import type { ParentProps } from 'solid-js'
+import type { Accessor, ParentProps } from 'solid-js'
 import type { ListItemProps } from '../ListItem'
 import type { ListContextValue } from './ListContext'
 import { ListContext } from './ListContext'
 
 export interface ListRootProps {
   onSelect: (key: ListItemProps['id']) => void
+  activedKey?: Accessor<number | string>
 }
 
 export function ListRoot(props: ParentProps<ListRootProps>) {
@@ -13,6 +14,7 @@ export function ListRoot(props: ParentProps<ListRootProps>) {
     activedItem,
     setActivedItem,
     onSelect: props.onSelect,
+    activedKey: props.activedKey,
   }
   return (
     <ListContext.Provider value={context}>

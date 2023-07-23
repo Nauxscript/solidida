@@ -20,8 +20,15 @@ export const ListItem: ParentComponent<ListItemProps> = (props) => {
     context.setActivedItem(defaultProps)
     context.onSelect?.(defaultProps.id)
   }
+
+  const isActived = createMemo(() => {
+    if (context.activedKey === undefined)
+      return context.activedItem()?.id === defaultProps.id
+    return context.activedKey() === defaultProps.id
+  })
+
   return (
-    <li class='group' flex items-center text-sm lh-10 font-normal list-none px-3 rounded cursor-pointer hover:bg-blue-50 classList={{ '!bg-blue-1': context.activedItem()?.id === defaultProps.id }} onClick={handleClick}>
+    <li class='group' flex items-center text-sm lh-10 font-normal list-none px-3 rounded cursor-pointer hover:bg-blue-50 classList={{ '!bg-blue-1': isActived() }} onClick={handleClick}>
       { defaultProps.icon && <i class={defaultProps.icon} text-gray-4></i>}
       <div class="content" px-2 flex-1>
         {defaultProps.children}

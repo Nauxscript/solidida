@@ -23,7 +23,7 @@ const Archive = (props: ArchiveProps) => {
   return (
     <section w-full h-full flex-col-box>
       <section>
-        <List.Root onSelect={handleSelect}>
+        <List.Root onSelect={handleSelect} activedKey={activedKey}>
           <For each={smartProjects()} fallback={'loading'}>
             {item => (<List.Item icon={item.icon} showOption={item.showOption} count={item.count}>{item.title}</List.Item>)}
           </For>
@@ -35,7 +35,7 @@ const Archive = (props: ArchiveProps) => {
         <For each={mainProjects()} fallback={'loading'}>
           {(item, index) => (
             <ToggleButton id={item.id} index={index} title={item.title}>
-              <List.Root onSelect={handleSelect}>
+              <List.Root onSelect={handleSelect} activedKey={activedKey}>
                 <For each={item.children}>
                   {listItem => (<List.Item>{listItem.title}</List.Item>)}
                 </For>
@@ -47,7 +47,7 @@ const Archive = (props: ArchiveProps) => {
       </div>
       <div h-1px bg-gray-1 mx-2 my-2></div>
       <section>
-        <List.Root onSelect={handleSelect}>
+        <List.Root onSelect={handleSelect} activedKey={activedKey}>
           <For each={concludedProjects()} fallback={'loading'}>
             {item => (<List.Item icon={item.icon} id={item.id}>{item.title}</List.Item>)}
           </For>
