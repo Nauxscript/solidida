@@ -7,6 +7,7 @@ declare module 'solid-js' {
       rounded?: boolean
       invisible?: boolean
       border?: string
+      focus?: string
     }
   }
 }

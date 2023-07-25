@@ -47,6 +47,16 @@ const handleHeaderOperate = (command: string) => {
 
 export const Tasks: Component<{}> = (props) => {
   const { toggleArchivePanel, archiveShow } = useMainLayoutContext()
+  const [inputValue, setInputValue] = createSignal('')
+  const handleKeyUp = (e: KeyboardEvent) => {
+    if (e.key === 'Enter') {
+    // wip: add todo
+    // eslint-disable-next-line no-console
+      console.log(inputValue())
+
+      setInputValue('')
+    }
+  }
   return (
     <div flex-col-box px-4>
       <div flex-both-center lh-10 h-10 pt-4 pb-2>
@@ -65,7 +75,7 @@ export const Tasks: Component<{}> = (props) => {
         </For>
       </div>
       <div pb-2>
-        <input type="text" px-2 border-none bg-gray-1 h-10 w-full box-border rounded focus:shadow-inset text-4 />
+        <input type="text" value={inputValue()} px-2 border-none bg-gray-1 h-10 w-full box-border rounded text-4 focus:bg-transparent focus="focus:shadow-none outline-blue-1" onKeyUp={handleKeyUp} onChange={e => setInputValue(e.target.value)}/>
       </div>
       <div flex-col-box>
         <For each={fakeData}>
