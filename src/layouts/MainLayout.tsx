@@ -14,9 +14,9 @@ export default function MainLayout(props: {
       <div ref={el => setLeftEleRef(el)} w-300px overflow-y-auto py-2>
         {props.archive}
       </div>
-      <div w-2px bg-gray-1 hover:bg-blue-1 cursor-w-resize onMouseDown={handleLeftDividerDrag}></div>
+      <div w-2px bg-gray-1 hover:bg-blue-1 cursor-ew-resize onMouseDown={handleLeftDividerDrag}></div>
       <div ref={el => setCenterEleRef(el)} flex-1 overflow-y-auto>Tasks</div>
-      <div w-2px bg-gray-1 hover:bg-blue-1 cursor-w-resize onMouseDown={handleRightDividerDrag}></div>
+      <div w-2px bg-gray-1 hover:bg-blue-1 cursor-ew-resize onMouseDown={handleRightDividerDrag}></div>
       <div ref={el => setRightEleRef(el)} w-400px overflow-y-auto>
         {props.editor}
       </div>
