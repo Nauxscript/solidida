@@ -3,8 +3,6 @@ import type { Accessor } from 'solid-js'
 const LEFT_WIDTH_RANGE = [200, 300]
 const RIGHT_WIDTH_RANGE = [300, 700]
 
-let CURR_RIGHT_WIDTH_RANGE: [number, number]
-
 enum ActiveEle {
   LEFT,
   RIGHT,
@@ -13,6 +11,7 @@ enum ActiveEle {
 export default function useDividerDrag(leftEleRef: Accessor<HTMLDivElement | undefined>, rightEleRef: Accessor<HTMLDivElement | undefined>, centerEleRef: Accessor<HTMLDivElement | undefined>) {
   let currEleFlag: ActiveEle | undefined
   let currEvent: MouseEvent | undefined
+  let CURR_RIGHT_WIDTH_RANGE: [number, number] | undefined
 
   const getOffset = (flag: ActiveEle) => {
     return flag === ActiveEle.LEFT ? 48 : 48 + leftEleRef()!.clientWidth + centerEleRef()!.clientWidth
@@ -85,10 +84,22 @@ export default function useDividerDrag(leftEleRef: Accessor<HTMLDivElement | und
     handleMouseUp()
   }
 
+  const resetRightWidth = () => {
+    // eslint-disable-next-line no-console
+    console.log(rightEleRef()?.clientWidth)
+    const range = CURR_RIGHT_WIDTH_RANGE || RIGHT_WIDTH_RANGE
+    const rightEle = rightEleRef()
+    const maxWidth = range[1]
+    if (rightEle && rightEle.clientWidth > maxWidth)
+      rightEle.style.width = `${maxWidth}px`
+  }
+
+  const setRightEleRange = (range?: [number, number]) => CURR_RIGHT_WIDTH_RANGE = range
+
   return {
     handleLeftDividerDrag,
     handleRightDividerDrag,
+    setRightEleRange,
+    resetRightWidth,
   }
 }
-
-export const setRightEleRange = (range: [number, number]) => CURR_RIGHT_WIDTH_RANGE = range
