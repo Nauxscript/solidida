@@ -3,6 +3,8 @@ import type { Accessor } from 'solid-js'
 const LEFT_WIDTH_RANGE = [200, 300]
 const RIGHT_WIDTH_RANGE = [300, 700]
 
+let CURR_RIGHT_WIDTH_RANGE: [number, number]
+
 enum ActiveEle {
   LEFT,
   RIGHT,
@@ -40,7 +42,7 @@ export default function useDividerDrag(leftEleRef: Accessor<HTMLDivElement | und
     }
     else {
       currEle = rightEleRef()!
-      widthRange = RIGHT_WIDTH_RANGE
+      widthRange = CURR_RIGHT_WIDTH_RANGE || RIGHT_WIDTH_RANGE
     }
     if (!currEvent || !currEle || currEleFlag === undefined)
       return
@@ -88,3 +90,5 @@ export default function useDividerDrag(leftEleRef: Accessor<HTMLDivElement | und
     handleRightDividerDrag,
   }
 }
+
+export const setRightEleRange = (range: [number, number]) => CURR_RIGHT_WIDTH_RANGE = range
