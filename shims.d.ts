@@ -6,6 +6,7 @@ declare module 'solid-js' {
       flex?: boolean
       rounded?: boolean
       invisible?: boolean
+      border?: string
     }
   }
 }
