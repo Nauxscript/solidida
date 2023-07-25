@@ -32,12 +32,12 @@ const TooltipLiContent = (props: ParentProps<{
   icon: string
 }>) => (
   <Tooltip.Root placement='right'>
-    <Tooltip.Trigger classList={{ [props.icon]: true, 'w-full h-full': true }}>
+    <Tooltip.Trigger classList={{ [props.icon]: true, 'w-full h-full border-0 cursor-pointer': true }}>
     </Tooltip.Trigger>
     <Tooltip.Portal>
       <Tooltip.Content class=" bg-gray-8 text-gray-1 px-2 py-4px rounded">
         <Tooltip.Arrow />
-        <p m-0 text-4>{props.tooltipText}</p>
+        <p m-0 text-3 p-1>{props.tooltipText}</p>
       </Tooltip.Content>
     </Tooltip.Portal>
   </Tooltip.Root>
@@ -55,15 +55,15 @@ export default function Navbar() {
         <ul class="routes" p-0 flex-col-box list-none h-full>
           <For each={navItems}>
             {item => (
-              <li classList={{ '!text-dark': currHref() === item.href }} my-2 cursor-pointer text-5 text-gray hover:text-gray-7 onClick={() => { handleNavigate(item.href) }}>
+              <li classList={{ '!text-dark': currHref() === item.href }} my-2 text-5 text-gray hover:text-gray-7 onClick={() => { handleNavigate(item.href) }}>
                 <TooltipLiContent icon={item.icon} tooltipText={item.tooltipText} />
               </li>
             )}
           </For>
-          <li my-2 ml-1 cursor-pointer text-4 text-gray hover:text-gray-7 onClick={openSearchPanel}>
+          <li my-2 ml-1 text-4 text-gray hover:text-gray-7 onClick={openSearchPanel}>
             <TooltipLiContent icon='i-carbon-search' tooltipText='搜索' />
           </li>
-          <li text-5 text-gray hover:text-dark my-2 cursor-pointer mt-auto w-8 onClick={goToGithub}>
+          <li text-5 text-gray hover:text-dark my-2 mt-auto w-6 onClick={goToGithub}>
             <TooltipLiContent icon='i-carbon-logo-github' tooltipText='看看我的仓库' />
           </li>
         </ul>
