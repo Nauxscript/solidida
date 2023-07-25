@@ -34,7 +34,7 @@ const Archive = (props: ArchiveProps) => {
       <div class="mainProjectView" flex-col-box w-full px-2 box-border>
         <For each={mainProjects()} fallback={'loading'}>
           {(item, index) => (
-            <ToggleButton id={item.id} index={index} title={item.title}>
+            <ToggleButton id={item.id} index={index} title={item.title} showOption={true}>
               <List.Root onSelect={handleSelect} activedKey={activedKey}>
                 <For each={item.children}>
                   {listItem => (<List.Item>{listItem.title}</List.Item>)}
