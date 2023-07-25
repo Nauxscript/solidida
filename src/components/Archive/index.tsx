@@ -52,7 +52,6 @@ const Archive = (props: ArchiveProps) => {
             {item => (<List.Item icon={item.icon} id={item.id}>{item.title}</List.Item>)}
           </For>
         </List.Root>
-        {/* <List data={concludedProjects()} activeKey={activedKey()} itemClick={handleItemClick}></List> */}
       </section>
       <div class="concludedProjectView"></div>
     </section>
