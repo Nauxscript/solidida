@@ -1,21 +1,23 @@
 import { createSignal } from 'solid-js'
-const [showSearchPanel, setShowSearchPanel] = createSignal(false)
+const [commandModalVisible, setCommandModalVisible] = createSignal(false)
 
 export const useCommandModal = () => {
-  const openSearchPanel = () => {
-    setShowSearchPanel(true)
+  const openCommandModal = () => {
+    setCommandModalVisible(true)
   }
 
-  const closeSearchPanel = () => {
-    setShowSearchPanel(false)
+  const closeCommandModal = () => {
+    setCommandModalVisible(false)
   }
 
-  return {
-    openSearchPanel,
-    closeSearchPanel,
+  const toggleCommandModal = () => {
+    setCommandModalVisible(prev => !prev)
   }
-}
 
 export {
   showSearchPanel,
+  return {
+    openCommandModal,
+    closeCommandModal,
+  }
 }

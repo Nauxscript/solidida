@@ -1,15 +1,20 @@
-import { showSearchPanel, useCommandModal } from '../'
+import { useCommandModal } from '../'
 describe('Command Modal', () => {
-  test('open search panel', () => {
-    const { openSearchPanel } = useCommandModal()
-    openSearchPanel()
-    expect(showSearchPanel()).toBe(true)
+  beforeEach(() => {
+    const { closeCommandModal } = useCommandModal()
+    closeCommandModal()
+  })
+  test('open command modal', () => {
+    const { openCommandModal, commandModalVisible } = useCommandModal()
+    openCommandModal()
+    expect(commandModalVisible()).toBe(true)
   })
 
-  test('close search panel', () => {
-    const { openSearchPanel, closeSearchPanel } = useCommandModal()
-    openSearchPanel()
-    closeSearchPanel()
-    expect(showSearchPanel()).toBe(false)
+  test('close command modal', () => {
+    const { openCommandModal, closeCommandModal, commandModalVisible } = useCommandModal()
+    openCommandModal()
+    closeCommandModal()
+    expect(commandModalVisible()).toBe(false)
   })
+
 })
