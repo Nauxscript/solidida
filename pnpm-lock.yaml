@@ -8,6 +8,9 @@ dependencies:
   '@kobalte/core':
     specifier: ^0.9.8
     version: 0.9.8(solid-js@1.7.8)
+  '@solid-primitives/keyboard':
+    specifier: ^1.2.3
+    version: 1.2.3(solid-js@1.7.8)
   '@testing-library/user-event':
     specifier: ^14.4.3
     version: 14.4.3(@testing-library/dom@9.3.1)
@@ -2828,6 +2831,17 @@ packages:
     peerDependencies:
       solid-js: ^1.6.12
     dependencies:
+      '@solid-primitives/utils': 6.2.0(solid-js@1.7.8)
+      solid-js: 1.7.8
+    dev: false
+
+  /@solid-primitives/keyboard@1.2.3(solid-js@1.7.8):
+    resolution: {integrity: sha512-8EBUk1lARIXVhSs9H2t0rclCuyX1y56Kf9J8VVmlPDSh1L+nSIU0wcDGVeVy3HWG6W8pRoRD7kwlQvXhdW2LAQ==}
+    peerDependencies:
+      solid-js: ^1.6.12
+    dependencies:
+      '@solid-primitives/event-listener': 2.2.13(solid-js@1.7.8)
+      '@solid-primitives/rootless': 1.4.1(solid-js@1.7.8)
       '@solid-primitives/utils': 6.2.0(solid-js@1.7.8)
       solid-js: 1.7.8
     dev: false
