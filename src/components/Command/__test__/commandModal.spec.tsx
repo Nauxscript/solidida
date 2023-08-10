@@ -18,9 +18,9 @@ describe('Command Modal', () => {
     expect(commandModalVisible()).toBe(false)
   })
 
-  test('cmd + k to ativate command modal on MacOS', () => {
-    createRoot(async () => {
       Object.defineProperty(window.navigator, 'platform', { value: 'MacOS', configurable: true })
+  test('cmd + k to ativate command modal on MacOS', async () => {
+    await createRoot(async (dispose) => {
       const { registerKeyboardShortcut, commandModalVisible } = useCommandModal()
       const user = userEvent.setup()
       registerKeyboardShortcut()
@@ -28,9 +28,9 @@ describe('Command Modal', () => {
       expect(commandModalVisible()).toBe(true)
     })
   })
-  test('ctrl + k to ativate command modal on Window', () => {
-    createRoot(async () => {
       Object.defineProperty(window.navigator, 'platform', { value: 'Window', configurable: true })
+  test('ctrl + k to ativate command modal on Window', async () => {
+    await createRoot(async (dispose) => {
       const { registerKeyboardShortcut, commandModalVisible } = useCommandModal()
       const user = userEvent.setup()
       registerKeyboardShortcut()
