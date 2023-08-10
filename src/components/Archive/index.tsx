@@ -13,8 +13,6 @@ const Archive = (props: ArchiveProps) => {
   const listProjects = useListProjectsStore(state => state.projects)
 
   const handleSelect = (key: number | string) => {
-    // eslint-disable-next-line no-console
-    console.log(key)
     setActivedKey(key)
   }
 

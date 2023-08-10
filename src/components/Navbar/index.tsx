@@ -46,13 +46,12 @@ const TooltipLiContent = (props: ParentProps<{
 
 export default function Navbar() {
   const { currHref, handleNavigate } = useGoto()
-  const { openCommandModal, commandModalVisible, setCommandModalVisible, registerKeyboardShortcut } = useCommandModal()
+  const { openCommandModal, commandModalVisible, setCommandModalVisible, registerKeyboardShortcut, toggleCommandModal } = useCommandModal()
   registerKeyboardShortcut()
 
-  // for test https://github.com/solidjs-community/solid-primitives/pull/279
-  createShortcut(['Meta', 'p'], () => {
-    // eslint-disable-next-line no-console
-    console.log('=================== print')
+  // shortcut for temporary use
+  createShortcut(['Control', ';'], () => {
+    toggleCommandModal()
   }, {
     preventDefault: true,
   })

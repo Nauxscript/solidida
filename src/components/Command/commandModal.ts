@@ -3,6 +3,7 @@ import { createShortcut } from '@solid-primitives/keyboard'
 import { useIsMac } from '@/hooks/misc'
 const [commandModalVisible, setCommandModalVisible] = createSignal(false)
 
+// got bug in Mac when using meta shortcut, refer to https://github.com/solidjs-community/solid-primitives/pull/279
 const shortcutOfMac = ['Meta', 'k']
 const shortcutOfWin = ['Control', 'k']
 
@@ -28,8 +29,6 @@ export const useCommandModal = () => {
       shorcutComb = shortcutOfWin
 
     createShortcut(shorcutComb, () => {
-      // eslint-disable-next-line no-console
-      console.log('sk')
       toggleCommandModal()
     }, {
       preventDefault: true,
@@ -37,10 +36,11 @@ export const useCommandModal = () => {
   }
 
   return {
-    openCommandModal,
     closeCommandModal,
     commandModalVisible,
-    setCommandModalVisible,
+    openCommandModal,
     registerKeyboardShortcut,
+    setCommandModalVisible,
+    toggleCommandModal,
   }
 }
