@@ -1,5 +1,6 @@
 import { Dialog, Tooltip } from '@kobalte/core'
 import type { ParentProps } from 'solid-js'
+import { createShortcut } from '@solid-primitives/keyboard'
 import { useCommandModal } from '../Command'
 import { goToGithub, useGoto } from '@/hooks/useGoto'
 
@@ -47,6 +48,14 @@ export default function Navbar() {
   const { currHref, handleNavigate } = useGoto()
   const { openCommandModal, commandModalVisible, setCommandModalVisible, registerKeyboardShortcut } = useCommandModal()
   registerKeyboardShortcut()
+
+  // for test https://github.com/solidjs-community/solid-primitives/pull/279
+  createShortcut(['Meta', 'p'], () => {
+    // eslint-disable-next-line no-console
+    console.log('=================== print')
+  }, {
+    preventDefault: true,
+  })
 
   return (
     <>
