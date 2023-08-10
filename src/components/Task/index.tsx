@@ -1,33 +1,43 @@
 import type { Component } from 'solid-js'
 import ToggleButton from '../ToggleButton'
-import type { TaskItemProps } from './TaskItem'
-import { TaskItem, TaskStatus } from './TaskItem'
+import { TaskItem } from './TaskItem'
 import { useMainLayoutContext } from '@/layouts/MainLayoutContext'
+import type { Task } from '@/store'
+import { TaskStatus, useTasksStore } from '@/store/tasks'
 
 const fakeData: Array<{
   name: string
   id: number | string
-  tasks: Array<TaskItemProps>
+  tasks: Array<Task>
 }> = [{
   name: '今天',
   id: 'today',
   tasks: [{
-    id: 1,
+    id: '1',
+    projectId: '1',
+    position: 1,
     title: 'happy coding',
     content: 'go and code it',
     status: TaskStatus.ACTIVE,
+    createDate: new Date(),
     tag: [],
   }, {
-    id: 2,
+    id: '2',
+    projectId: '1',
+    position: 2,
     title: 'sleeping well',
     content: 'soft kitty warm kitty little ball of fur',
     status: TaskStatus.ACTIVE,
+    createDate: new Date(2023, 8, 9, 10, 23, 0),
     tag: [],
   }, {
-    id: 3,
+    id: '3',
+    projectId: '1',
+    position: 3,
     title: 'making progress',
     content: 'fuck it! damn it!',
     status: TaskStatus.ACTIVE,
+    createDate: new Date(2023, 8, 7, 10, 23, 0),
     tag: [],
   }],
 }]
@@ -48,6 +58,9 @@ const handleHeaderOperate = (command: string) => {
 export const Tasks: Component<{}> = (props) => {
   const { toggleArchivePanel, archiveShow } = useMainLayoutContext()
   const [inputValue, setInputValue] = createSignal('')
+
+  const tasks = useTasksStore(state => state.tasks)
+
   const handleKeyUp = (e: KeyboardEvent) => {
     if (e.key === 'Enter') {
     // wip: add todo

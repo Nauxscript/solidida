@@ -1,11 +1,6 @@
 import { Checkbox } from '@kobalte/core'
 import type { Component } from 'solid-js'
-
-export enum TaskStatus {
-  ACTIVE = 'ACTIVE',
-  COMPLETED = 'COMPLETED',
-  REMOVED = 'REMOVED',
-}
+import type { TaskStatus } from '@/store/tasks'
 
 export interface TaskItemProps {
   id: string | number
