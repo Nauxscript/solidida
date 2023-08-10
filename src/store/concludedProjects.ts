@@ -1,7 +1,15 @@
 import { ProjectType } from './listProjects'
 import { TaskStatus } from './tasks'
 
-export const concludedProjectBaseData = [
+export interface ConcludedProject {
+  id: TaskStatus
+  name: string
+  type: ProjectType
+  includeStatus: TaskStatus
+  icon: string
+}
+
+export const concludedProjectBaseData: ConcludedProject[] = [
   {
     id: TaskStatus.COMPLETED,
     name: '已完成',
