@@ -2,45 +2,7 @@ import type { Component } from 'solid-js'
 import ToggleButton from '../ToggleButton'
 import { TaskItem } from './TaskItem'
 import { useMainLayoutContext } from '@/layouts/MainLayoutContext'
-import type { Task } from '@/store'
-import { TaskStatus, useTasksStore } from '@/store/tasks'
-
-const fakeData: Array<{
-  name: string
-  id: number | string
-  tasks: Array<Task>
-}> = [{
-  name: '今天',
-  id: 'today',
-  tasks: [{
-    id: '1',
-    projectId: '1',
-    position: 1,
-    title: 'happy coding',
-    content: 'go and code it',
-    status: TaskStatus.ACTIVE,
-    createDate: new Date(),
-    tag: [],
-  }, {
-    id: '2',
-    projectId: '1',
-    position: 2,
-    title: 'sleeping well',
-    content: 'soft kitty warm kitty little ball of fur',
-    status: TaskStatus.ACTIVE,
-    createDate: new Date(2023, 8, 9, 10, 23, 0),
-    tag: [],
-  }, {
-    id: '3',
-    projectId: '1',
-    position: 3,
-    title: 'making progress',
-    content: 'fuck it! damn it!',
-    status: TaskStatus.ACTIVE,
-    createDate: new Date(2023, 8, 7, 10, 23, 0),
-    tag: [],
-  }],
-}]
+import { useTasksStore } from '@/store/tasks'
 
 const headerOperations = [{
   name: 'sort',
@@ -91,10 +53,13 @@ export const Tasks: Component<{}> = (props) => {
         <input type="text" value={inputValue()} px-2 border-none bg-gray-1 h-10 w-full box-border rounded text-4 focus:bg-transparent focus="focus:shadow-none outline-blue-1" onKeyUp={handleKeyUp} onChange={e => setInputValue(e.target.value)}/>
       </div>
       <div flex-col-box>
-        <For each={fakeData}>
+        <For each={[{
+          name: '示例',
+          id: 'example',
+        }]}>
           {(item, index) => (
             <ToggleButton id={item.id} title={item.name} index={index} showTrigger={true} hoverEffect={false} expanded={true}>
-              <For each={item.tasks}>
+              <For each={tasks}>
                 {task => (
                   <TaskItem {...task}></TaskItem>
                 )}
