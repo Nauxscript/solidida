@@ -1,9 +1,12 @@
 import userEvent from '@testing-library/user-event'
 import { useCommandModal } from '../'
+import { mockPlatform } from '@/test/helper'
 describe('Command Modal', () => {
   beforeEach(() => {
     const { closeCommandModal } = useCommandModal()
     closeCommandModal()
+    // clear platform mock
+    mockPlatform('')
   })
   test('open command modal', () => {
     const { openCommandModal, commandModalVisible } = useCommandModal()
@@ -18,24 +21,39 @@ describe('Command Modal', () => {
     expect(commandModalVisible()).toBe(false)
   })
 
-      Object.defineProperty(window.navigator, 'platform', { value: 'MacOS', configurable: true })
   test('cmd + k to ativate command modal on MacOS', async () => {
     await createRoot(async (dispose) => {
+      mockPlatform('MacOS')
       const { registerKeyboardShortcut, commandModalVisible } = useCommandModal()
       const user = userEvent.setup()
       registerKeyboardShortcut()
       await user.keyboard('{Meta>}k/')
       expect(commandModalVisible()).toBe(true)
+      dispose()
     })
   })
-      Object.defineProperty(window.navigator, 'platform', { value: 'Window', configurable: true })
+
   test('ctrl + k to ativate command modal on Window', async () => {
     await createRoot(async (dispose) => {
+      mockPlatform('Window')
       const { registerKeyboardShortcut, commandModalVisible } = useCommandModal()
       const user = userEvent.setup()
       registerKeyboardShortcut()
       await user.keyboard('{Control>}k/')
       expect(commandModalVisible()).toBe(true)
+      dispose()
+    })
+  })
+
+  test('cmd + k to ativate command modal and trigger this shorcut again will close the modal', async () => {
+    await createRoot(async () => {
+      mockPlatform('MacOS')
+      const { registerKeyboardShortcut, commandModalVisible } = useCommandModal()
+      const user = userEvent.setup()
+      registerKeyboardShortcut()
+      await user.keyboard('{Meta>}k/')
+      await user.keyboard('{Meta>}k/')
+      expect(commandModalVisible()).toBe(false)
     })
   })
 })
