@@ -46,6 +46,7 @@ const TooltipLiContent = (props: ParentProps<{
 export default function Navbar() {
   const { currHref, handleNavigate } = useGoto()
   const { openCommandModal, commandModalVisible, setCommandModalVisible, registerKeyboardShortcut } = useCommandModal()
+  registerKeyboardShortcut()
 
   return (
     <>

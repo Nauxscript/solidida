@@ -28,7 +28,11 @@ export const useCommandModal = () => {
       shorcutComb = shortcutOfWin
 
     createShortcut(shorcutComb, () => {
+      // eslint-disable-next-line no-console
+      console.log('sk')
       toggleCommandModal()
+    }, {
+      preventDefault: true,
     })
   }
 
