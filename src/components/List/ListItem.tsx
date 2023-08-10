@@ -28,7 +28,7 @@ export const ListItem: ParentComponent<ListItemProps> = (props) => {
     return context.activedKey() === defaultProps.id
   })
 
-  const normalizeCount = (count: number) => {
+  const normalizeCount = (count: number | undefined) => {
     if (count || defaultProps.showZero)
       return count
     return ''
