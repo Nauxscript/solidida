@@ -1,5 +1,1 @@
-const createGlobalStore = () => {
-
-}
-
-export default createGlobalStore
+export * from './listProjects'

@@ -2,7 +2,8 @@
 import List from '../List'
 import type { ListItemId } from '../ListItem'
 import ToggleButton from '../ToggleButton'
-import { SmartProjectKeys, concludedProjectBaseData, mainProjectBaseData, smartProjectBaseData } from '@/utils/constant'
+import { SmartProjectKeys, concludedProjectBaseData, smartProjectBaseData } from '@/utils/constant'
+import { useListProjectsStore } from '@/store'
 
 interface ArchiveProps {
 }
@@ -10,9 +11,10 @@ interface ArchiveProps {
 const Archive = (props: ArchiveProps) => {
   const [smartProjects, updateSmartProjects] = createSignal(smartProjectBaseData)
   const [concludedProjects, updateConcludedProjects] = createSignal(concludedProjectBaseData)
-  const [mainProjects, updateMainProjects] = createSignal(mainProjectBaseData)
 
   const [activedKey, setActivedKey] = createSignal<ListItemId>(SmartProjectKeys.TODAY)
+
+  const listProjects = useListProjectsStore(state => state.projects)
 
   const handleSelect = (key: number | string) => {
     // eslint-disable-next-line no-console
@@ -32,9 +34,9 @@ const Archive = (props: ArchiveProps) => {
       </section>
       <div h-1px bg-gray-1 mx-2 my-2></div>
       <div class="mainProjectView" flex-col-box w-full px-2 box-border>
-        <For each={mainProjects()} fallback={'loading'}>
+        <For each={listProjects} fallback={'loading'}>
           {(item, index) => (
-            <ToggleButton id={item.id} index={index} title={item.title} showOption={true}>
+            <ToggleButton id={item.id} index={index} title={item.name} showOption={true}>
               <List.Root onSelect={handleSelect} activedKey={activedKey}>
                 <For each={item.children}>
                   {listItem => (<List.Item>{listItem.title}</List.Item>)}
