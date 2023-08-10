@@ -18,10 +18,6 @@ export interface Task {
   createDate: Date
 }
 
-interface TasksStore {
-  tasks: Task[]
-}
-
 const fakeData = [{
   id: '1',
   projectId: '1',
@@ -51,6 +47,41 @@ const fakeData = [{
   tag: [],
 }]
 
+interface TasksStore {
+  tasks: Task[]
+  addTask: (title: string) => Task
+  removeTask: (targetTask: Task) => void
+  updateTasks: (tasks: Task[]) => void
+}
+
+const createTask = (title: string, projectId = ''): Task => ({
+  id: Date.now().toString(),
+  projectId,
+  position: 0,
+  title,
+  content: '',
+  status: TaskStatus.ACTIVE,
+  createDate: new Date(),
+  tag: [],
+})
+
 export const useTasksStore = create<TasksStore>(set => ({
-  tasks: fakeData,
+  tasks: [],
+  addTask: (title) => {
+    const task = createTask(title)
+    set(state => ({
+      tasks: [...state.tasks, task],
+    }))
+    return task
+  },
+  removeTask: (targetTask) => {
+    set(state => ({
+      tasks: state.tasks.filter(task => task.id !== targetTask.id),
+    }))
+  },
+  updateTasks: (tasks) => {
+    set(() => ({
+      tasks,
+    }))
+  },
 }))
