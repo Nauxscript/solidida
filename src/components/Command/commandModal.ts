@@ -3,7 +3,7 @@ import { createShortcut } from '@solid-primitives/keyboard'
 import { useIsMac } from '@/hooks/misc'
 const [commandModalVisible, setCommandModalVisible] = createSignal(false)
 
-const shortcutOfMac = ['Command', 'k']
+const shortcutOfMac = ['Meta', 'k']
 const shortcutOfWin = ['Control', 'k']
 
 export const useCommandModal = () => {

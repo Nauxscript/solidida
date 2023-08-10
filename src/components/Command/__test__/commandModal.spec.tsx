@@ -24,7 +24,7 @@ describe('Command Modal', () => {
       const { registerKeyboardShortcut, commandModalVisible } = useCommandModal()
       const user = userEvent.setup()
       registerKeyboardShortcut()
-      await user.keyboard('{Command>}k/')
+      await user.keyboard('{Meta>}k/')
       expect(commandModalVisible()).toBe(true)
     })
   })
