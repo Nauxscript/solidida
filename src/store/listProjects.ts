@@ -4,6 +4,7 @@ import type { Task } from './tasks'
 export enum ProjectType {
   LIST_PROJECT = 'LIST_PROJECT',
   SMART_PROJECT = 'SMART_PROJECT',
+  CONCLUDED_PROJECT = 'CONCLUDED_PROJECT',
 }
 
 export interface ListProject {
