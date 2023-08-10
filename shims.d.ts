@@ -8,6 +8,8 @@ declare module 'solid-js' {
       invisible?: boolean
       border?: string
       focus?: string
+      fixed?: boolean
+      relative?: boolean
     }
   }
 }

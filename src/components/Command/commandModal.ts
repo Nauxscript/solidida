@@ -36,6 +36,7 @@ export const useCommandModal = () => {
     openCommandModal,
     closeCommandModal,
     commandModalVisible,
+    setCommandModalVisible,
     registerKeyboardShortcut,
   }
 }

@@ -1,4 +1,4 @@
-import { Tooltip } from '@kobalte/core'
+import { Dialog, Tooltip } from '@kobalte/core'
 import type { ParentProps } from 'solid-js'
 import { useCommandModal } from '../Command'
 import { goToGithub, useGoto } from '@/hooks/useGoto'
@@ -45,8 +45,10 @@ const TooltipLiContent = (props: ParentProps<{
 
 export default function Navbar() {
   const { currHref, handleNavigate } = useGoto()
-  const { openSearchPanel } = useCommandModal()
+  const { openCommandModal, commandModalVisible, setCommandModalVisible, registerKeyboardShortcut } = useCommandModal()
+
   return (
+    <>
     <nav h-full w-12 bg-blue-1 flex-col-box>
       <div class="user" flex-both-center bg-gray-2 w-8 h-8 mx-2 my-6 rounded text-gray-3 hover:text-gray-5 cursor-pointer>
         <div i-carbon-user-filled inline-block="" text-5 ></div>
@@ -60,7 +62,7 @@ export default function Navbar() {
               </li>
             )}
           </For>
-          <li my-2 ml-1 text-4 text-gray hover:text-gray-7 onClick={openSearchPanel}>
+          <li my-2 ml-1 text-4 text-gray hover:text-gray-7 onClick={openCommandModal}>
             <TooltipLiContent icon='i-carbon-search' tooltipText='搜索' />
           </li>
           <li text-5 text-gray hover:text-dark my-2 mt-auto w-6 onClick={goToGithub}>
@@ -70,5 +72,33 @@ export default function Navbar() {
 
       </div>
     </nav>
+    <Dialog.Root open={commandModalVisible()} onOpenChange={setCommandModalVisible} modal >
+      <Dialog.Portal>
+        <Dialog.Overlay class="dialog__overlay" />
+        <div top-0 left-0 flex-both-center fixed z-999 h-full w-full>
+          <Dialog.Content class="flex-col-box h-450px w-720px dialog-shadow bg-white rounded-2 p-4 box-border">
+            <div class="" relative>
+              <Dialog.Title class='m-0 mb-2 flex h-8'>
+                <input type="text" name="" id="" border="t-0 x-0 solid b-1px" w-full h-full pr-8 text-4 font-normal focus="focus:shadow-none outline-none border-b-blue-2" />
+              </Dialog.Title>
+              <Dialog.CloseButton class="absolute right-1 top-1 flex hover:text-blue-6 cursor-pointer">
+                <i i-carbon-close w-6 h-6></i>
+              </Dialog.CloseButton>
+            </div>
+            <Dialog.Description class="dialog__description">
+              <ul>
+                <li>1234</li>
+                <li>1234</li>
+                <li>1234</li>
+                <li>1234</li>
+                <li>1234</li>
+              </ul>
+            </Dialog.Description>
+          </Dialog.Content>
+        </div>
+      </Dialog.Portal>
+    </Dialog.Root>
+    </>
+
   )
 }

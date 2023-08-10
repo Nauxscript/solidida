@@ -46,6 +46,12 @@ export default defineConfig({
         'flex-col-box': 'flex flex-col',
         'flex-both-center': 'flex items-center justify-center',
       },
+      rules: [
+        ['dialog-shadow', {
+          'box-shadow': 'rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.2) 0px 5px 18px 0px',
+        }],
+        ['unset', { all: 'unset' }],
+      ],
       safelist: [
         // dynamic icon
         'i-carbon-calendar',
