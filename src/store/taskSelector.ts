@@ -7,7 +7,7 @@ type BaseProject = ListProject | SmartProject | ConcludedProject
 
 interface TasksSelectorStore {
   currentSelector: BaseProject | null
-  setCurrentSeletor: (selector: BaseProject) => void
+  setCurrentSeletor: (selector: BaseProject | null) => void
 }
 
 export const useTasksSelectorStore = create<TasksSelectorStore>(set => ({
