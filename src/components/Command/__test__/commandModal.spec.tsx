@@ -7,8 +7,6 @@ describe('Command Modal', () => {
     closeCommandModal()
     // clear platform mock
     mockPlatform('')
-    // eslint-disable-next-line no-console
-    console.log('beforeEach')
   })
   describe('basic control of command modal', () => {
     test('open command modal', () => {

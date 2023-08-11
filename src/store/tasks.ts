@@ -19,35 +19,6 @@ export interface Task {
   createDate: Date
 }
 
-const fakeData = [{
-  id: '1',
-  projectId: '1',
-  position: 1,
-  title: 'happy coding',
-  content: 'go and code it',
-  status: TaskStatus.ACTIVE,
-  createDate: new Date(),
-  tag: [],
-}, {
-  id: '2',
-  projectId: '1',
-  position: 2,
-  title: 'sleeping well',
-  content: 'soft kitty warm kitty little ball of fur',
-  status: TaskStatus.ACTIVE,
-  createDate: new Date(2023, 8, 9, 10, 23, 0),
-  tag: [],
-}, {
-  id: '3',
-  projectId: '1',
-  position: 3,
-  title: 'making progress',
-  content: 'fuck it! damn it!',
-  status: TaskStatus.ACTIVE,
-  createDate: new Date(2023, 8, 7, 10, 23, 0),
-  tag: [],
-}]
-
 interface TasksStore {
   tasks: Task[]
   addTask: (title: string) => Task | void
@@ -73,7 +44,6 @@ export const useTasksStore = create<TasksStore>(set => ({
     if (!currentSelector)
       return
     const task = createTask(title, currentSelector.id)
-
     set(state => ({
       tasks: [...state.tasks, task],
     }))

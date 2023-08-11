@@ -25,10 +25,6 @@ export const Tasks: Component<{}> = (props) => {
 
   const handleKeyUp = (e: KeyboardEvent) => {
     if (e.key === 'Enter') {
-    // wip: add todo
-    // eslint-disable-next-line no-console
-      console.log(inputValue())
-
       setInputValue('')
     }
   }
