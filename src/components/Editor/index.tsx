@@ -1,6 +1,8 @@
 import { createSignal } from 'solid-js'
 import type { Instance } from 'ink-mde'
 import { Appearance, defineOptions, ink } from 'ink-mde'
+import type { Task } from '@/store'
+import { useTasksStore } from '@/store'
 
 export interface EditorProps {
   content?: string
@@ -14,6 +16,18 @@ const Editor = (props: EditorProps) => {
   const editorCustomStyle = {
     '--ink-block-background-color': '#f9fafb',
   }
+
+  const taskStore = useTasksStore()
+
+  const combineTitleAndContent = (task?: Task) => {
+    if (!task)
+      return ''
+    return `# ${task.title}\n${task.content}`
+  }
+
+  createEffect(on(() => taskStore.activeTask, () => {
+    editorClass()?.update(combineTitleAndContent(taskStore.activeTask))
+  }))
 
   const editorOptions = defineOptions({
     doc: props.content || undefined,

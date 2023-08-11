@@ -21,9 +21,18 @@ export interface Task {
 
 interface TasksStore {
   tasks: Task[]
+  activeTask: Task | undefined
+}
+
+interface Actions {
   addTask: (title: string) => Task | void
   removeTask: (targetTask: Task) => void
   updateTasks: (tasks: Task[]) => void
+  updateTask: (target: Task, data: Partial<Task>) => void
+  completeTask: (task: Task) => void
+  abandonTask: (task: Task) => void
+  undoCompleteTask: (task: Task) => void
+  setActiveTask: (task: Task | undefined) => void
 }
 
 const createTask = (title: string, projectId = ''): Task => ({
@@ -37,8 +46,9 @@ const createTask = (title: string, projectId = ''): Task => ({
   tag: [],
 })
 
-export const useTasksStore = create<TasksStore>(set => ({
+export const useTasksStore = create<TasksStore & Actions>((set, get) => ({
   tasks: [],
+  activeTask: undefined,
   addTask: (title) => {
     if (!title)
       return
@@ -49,16 +59,46 @@ export const useTasksStore = create<TasksStore>(set => ({
     set(state => ({
       tasks: [...state.tasks, task],
     }))
+    get().setActiveTask(task)
     return task
   },
   removeTask: (targetTask) => {
     set(state => ({
       tasks: state.tasks.filter(task => task.id !== targetTask.id),
     }))
+    if (targetTask.id === get().activeTask?.id)
+      get().setActiveTask(undefined)
+  },
+  updateTask: (target, data) => {
+    set(state => ({
+      tasks: state.tasks.map((task) => {
+        if (target.id === task.id) {
+          return {
+            ...task,
+            ...data,
+          }
+        }
+        return task
+      }),
+    }))
   },
   updateTasks: (tasks) => {
     set(() => ({
       tasks,
     }))
+  },
+  completeTask: (task) => {
+    get().updateTask(task, { status: TaskStatus.COMPLETED })
+  },
+  abandonTask: (task) => {
+    get().updateTask(task, { status: TaskStatus.ABANDONED })
+  },
+  undoCompleteTask: (task) => {
+    get().updateTask(task, { status: TaskStatus.ACTIVE })
+  },
+  setActiveTask: (task) => {
+    set({
+      activeTask: task,
+    })
   },
 }))

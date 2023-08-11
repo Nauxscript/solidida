@@ -3,6 +3,7 @@ import ToggleButton from '../ToggleButton'
 import { TaskItem } from './TaskItem'
 import { useMainLayoutContext } from '@/layouts/MainLayoutContext'
 import { useTasksStore } from '@/store/tasks'
+import type { Task } from '@/store'
 
 const headerOperations = [{
   name: 'sort',
@@ -22,13 +23,26 @@ export const Tasks: Component<{}> = (props) => {
   const [inputValue, setInputValue] = createSignal('')
 
   const tasks = useTasksStore(state => state.tasks)
-  const addTask = useTasksStore(state => state.addTask)
+  const [addTask, completeTask, undoCompleteTask, setActiveTask] = useTasksStore(state => [state.addTask, state.completeTask, state.undoCompleteTask, state.setActiveTask])
 
   const handleKeyUp = (e: KeyboardEvent) => {
     if (e.key === 'Enter') {
       addTask(inputValue())
       setInputValue('')
     }
+  }
+
+  const handleCheck = (checkStatus: boolean, task: Task) => {
+    if (checkStatus)
+      completeTask(task)
+    else
+      undoCompleteTask(task)
+    // eslint-disable-next-line no-console
+    console.log(task)
+  }
+
+  const handleContextMenu = (task: Task) => {
+    setActiveTask(task)
   }
 
   return (
@@ -60,7 +74,7 @@ export const Tasks: Component<{}> = (props) => {
             <ToggleButton id={item.id} title={item.name} index={index} showTrigger={true} hoverEffect={false} expanded={true}>
               <For each={tasks}>
                 {task => (
-                  <TaskItem {...task}></TaskItem>
+                  <TaskItem title={task.title} onChange={checkStatus => handleCheck(checkStatus, task)} onContextMenu={() => handleContextMenu(task)}></TaskItem>
                 )}
               </For>
             </ToggleButton>

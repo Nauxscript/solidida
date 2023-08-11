@@ -1,19 +1,16 @@
 import { Checkbox } from '@kobalte/core'
 import type { Component } from 'solid-js'
-import type { TaskStatus } from '@/store/tasks'
 
 export interface TaskItemProps {
-  id: string | number
   title: string
-  content: string
-  tag: Array<string | number>
-  status: TaskStatus
+  onChange: (status: boolean) => void
+  onContextMenu?: (e: MouseEvent) => void
 }
 
 export const TaskItem: Component<TaskItemProps> = (props) => {
   return (
-    <div flex-both-center w-full h-10>
-      <Checkbox.Root class="flex-both-center p-1 mx-1 h-full box-border cursor-pointer">
+    <div flex-both-center w-full h-10 onContextMenu={props.onContextMenu}>
+      <Checkbox.Root class="flex-both-center p-1 mx-1 h-full box-border cursor-pointer" onChange={props.onChange}>
         <Checkbox.Input />
         <Checkbox.Control class="h-3 w-3 border-gray-4 border-1 border-solid flex-both-center rd-2px shadow-gray-2 shadow-sm shadow-inner text-3 text-white data-[checked]:bg-gray-4">
           <Checkbox.Indicator>
