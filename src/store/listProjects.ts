@@ -7,7 +7,13 @@ export enum ProjectType {
   CONCLUDED_PROJECT = 'CONCLUDED_PROJECT',
 }
 
-export interface ListProject {
+export interface BaseProject {
+  id: string
+  name: string
+  type: string
+}
+
+export interface ListProject extends BaseProject {
   id: string
   name: string
   type: ProjectType

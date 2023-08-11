@@ -1,3 +1,6 @@
+import type { BaseProject } from './listProjects'
+import { ProjectType } from './listProjects'
+
 export enum SmartProjectKeys {
   TODAY = 'TODAY',
   TOMORROW = 'TOMORROW',
@@ -6,10 +9,11 @@ export enum SmartProjectKeys {
   COLLECTED = 'COLLECTED',
 }
 
-export interface SmartProject {
-  id: SmartProjectKeys
+export interface SmartProject extends BaseProject {
+  id: string
   name: string
   showOption: boolean
+  type: ProjectType.SMART_PROJECT
   count: number
   icon: string
 }
@@ -26,6 +30,7 @@ const createSmartProjectBaseData = (name: string, id: SmartProjectKeys): SmartPr
   name,
   id,
   showOption: true,
+  type: ProjectType.SMART_PROJECT,
   count: 0,
   icon: iconMap[id],
 })

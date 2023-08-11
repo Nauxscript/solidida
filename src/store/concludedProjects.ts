@@ -1,8 +1,9 @@
+import type { BaseProject } from './listProjects'
 import { ProjectType } from './listProjects'
 import { TaskStatus } from './tasks'
 
-export interface ConcludedProject {
-  id: TaskStatus
+export interface ConcludedProject extends BaseProject {
+  id: string
   name: string
   type: ProjectType
   includeStatus: TaskStatus

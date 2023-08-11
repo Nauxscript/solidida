@@ -1,9 +1,5 @@
 import create from 'solid-zustand'
-import type { SmartProject } from './smartProjects'
-import type { ListProject } from './listProjects'
-import type { ConcludedProject } from './concludedProjects'
-
-type BaseProject = ListProject | SmartProject | ConcludedProject
+import type { BaseProject } from './listProjects'
 
 interface TasksSelectorStore {
   currentSelector: BaseProject | null
