@@ -6,7 +6,7 @@ export interface ListContextValue {
   activedItem: Accessor<any>
   setActivedItem: (item: ListItemProps | undefined) => void
   onSelect?: ListRootProps['onSelect']
-  activedKey?: ListItemProps['id']
+  activedKey?: () => ListItemProps['id']
 }
 
 export const ListContext = createContext<ListContextValue>()

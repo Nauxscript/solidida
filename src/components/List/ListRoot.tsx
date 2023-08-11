@@ -15,7 +15,7 @@ export function ListRoot(props: ParentProps<ListRootProps>) {
     activedItem,
     setActivedItem,
     onSelect: props.onSelect,
-    activedKey: props.activedKey,
+    activedKey: () => props.activedKey,
   }
   return (
     <ListContext.Provider value={context}>

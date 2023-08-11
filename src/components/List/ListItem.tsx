@@ -16,6 +16,8 @@ export const ListItem: ParentComponent<ListItemProps> = (props) => {
   const context = useListContext()
 
   const defaultProps = mergeProps({ id: createUniqueId() }, props)
+  if (defaultProps.id === context.activedKey?.())
+    context.setActivedItem(defaultProps)
 
   const handleClick = () => {
     context.setActivedItem(defaultProps)
@@ -25,7 +27,7 @@ export const ListItem: ParentComponent<ListItemProps> = (props) => {
   const isActived = createMemo(() => {
     if (context.activedKey === undefined)
       return context.activedItem()?.id === defaultProps.id
-    return context.activedKey === defaultProps.id
+    return context.activedKey() === defaultProps.id
   })
 
   const normalizeCount = (count: number | undefined) => {
