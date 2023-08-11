@@ -19,16 +19,21 @@ export const ListItem: ParentComponent<ListItemProps> = (props) => {
   if (defaultProps.id === context.activedKey?.())
     context.setActivedItem(defaultProps)
 
-  const handleClick = () => {
-    context.setActivedItem(defaultProps)
-    context.onSelect?.(defaultProps.id)
-  }
-
   const isActived = createMemo(() => {
     if (context.activedKey === undefined)
       return context.activedItem()?.id === defaultProps.id
     return context.activedKey() === defaultProps.id
   })
+
+  const handleClick = () => {
+    if (isActived()) {
+      context.setActivedItem(undefined)
+      context.onSelect?.('')
+      return
+    }
+    context.setActivedItem(defaultProps)
+    context.onSelect?.(defaultProps.id)
+  }
 
   const normalizeCount = (count: number | undefined) => {
     if (count || defaultProps.showZero)

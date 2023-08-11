@@ -40,6 +40,8 @@ const createTask = (title: string, projectId = ''): Task => ({
 export const useTasksStore = create<TasksStore>(set => ({
   tasks: [],
   addTask: (title) => {
+    if (!title)
+      return
     const currentSelector = useTasksSelectorStore.getState().currentSelector
     if (!currentSelector)
       return

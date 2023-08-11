@@ -1,7 +1,7 @@
 import type { ParentComponent } from 'solid-js'
 import { children } from 'solid-js'
 
-export type ListItemId = string | number
+export type ListItemId = string
 export interface ListItemProps {
   id: ListItemId
   index: number

@@ -35,11 +35,11 @@ const createSmartProjectBaseData = (name: string, id: SmartProjectKeys): SmartPr
   icon: iconMap[id],
 })
 
-const todayProject = createSmartProjectBaseData('今天', SmartProjectKeys.TODAY)
-const tomorrowProject = createSmartProjectBaseData('明天', SmartProjectKeys.TOMORROW)
-const sevenDaysProject = createSmartProjectBaseData('最近7天', SmartProjectKeys.SEVENDAYS)
-const assignedProject = createSmartProjectBaseData('指派给我', SmartProjectKeys.ASSIGNED)
-const collectedProject = createSmartProjectBaseData('收集箱', SmartProjectKeys.COLLECTED)
+export const todayProject = createSmartProjectBaseData('今天', SmartProjectKeys.TODAY)
+export const tomorrowProject = createSmartProjectBaseData('明天', SmartProjectKeys.TOMORROW)
+export const sevenDaysProject = createSmartProjectBaseData('最近7天', SmartProjectKeys.SEVENDAYS)
+export const assignedProject = createSmartProjectBaseData('指派给我', SmartProjectKeys.ASSIGNED)
+export const collectedProject = createSmartProjectBaseData('收集箱', SmartProjectKeys.COLLECTED)
 
 export const smartProjectBaseData = [
   todayProject,
