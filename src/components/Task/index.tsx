@@ -1,5 +1,6 @@
 import type { Component } from 'solid-js'
 import ToggleButton from '../ToggleButton'
+import { Commands, ContextMenuContainer } from '../ContextMenu'
 import { TaskItem } from './TaskItem'
 import { useMainLayoutContext } from '@/layouts/MainLayoutContext'
 import { useTasksStore } from '@/store/tasks'
@@ -23,7 +24,8 @@ export const Tasks: Component<{}> = (props) => {
   const [inputValue, setInputValue] = createSignal('')
 
   const tasks = useTasksStore(state => state.tasks)
-  const [addTask, completeTask, undoCompleteTask, setActiveTask] = useTasksStore(state => [state.addTask, state.completeTask, state.undoCompleteTask, state.setActiveTask])
+  const taskStore = useTasksStore()
+  const [addTask, completeTask, undoCompleteTask, setActiveTask, removeTask] = useTasksStore(state => [state.addTask, state.completeTask, state.undoCompleteTask, state.setActiveTask, state.removeTask])
 
   const handleKeyUp = (e: KeyboardEvent) => {
     if (e.key === 'Enter') {
@@ -43,6 +45,13 @@ export const Tasks: Component<{}> = (props) => {
 
   const handleContextMenu = (task: Task) => {
     setActiveTask(task)
+  }
+
+  const handleCommand = (commmand: Commands) => {
+    // eslint-disable-next-line no-console
+    console.log(commmand)
+    if (commmand === Commands.REMOVE)
+      taskStore.activeTask && removeTask(taskStore.activeTask)
   }
 
   return (
@@ -66,20 +75,22 @@ export const Tasks: Component<{}> = (props) => {
         <input type="text" value={inputValue()} px-2 border-none bg-gray-1 h-10 w-full box-border rounded text-4 focus:bg-transparent focus="focus:shadow-none outline-blue-1" onKeyUp={handleKeyUp} onChange={e => setInputValue(e.target.value)} />
       </div>
       <div flex-col-box>
-        <For each={[{
-          name: '示例',
-          id: 'example',
-        }]}>
-          {(item, index) => (
-            <ToggleButton id={item.id} title={item.name} index={index} showTrigger={true} hoverEffect={false} expanded={true}>
-              <For each={tasks}>
-                {task => (
-                  <TaskItem title={task.title} onChange={checkStatus => handleCheck(checkStatus, task)} onContextMenu={() => handleContextMenu(task)}></TaskItem>
-                )}
-              </For>
-            </ToggleButton>
-          )}
-        </For>
+        <ContextMenuContainer onCommand={handleCommand}>
+          <For each={[{
+            name: '示例',
+            id: 'example',
+          }]}>
+            {(item, index) => (
+              <ToggleButton id={item.id} title={item.name} index={index} showTrigger={true} hoverEffect={false} expanded={true}>
+                <For each={tasks}>
+                  {task => (
+                    <TaskItem title={task.title} onChange={checkStatus => handleCheck(checkStatus, task)} onContextMenu={() => handleContextMenu(task)}></TaskItem>
+                  )}
+                </For>
+              </ToggleButton>
+            )}
+          </For>
+        </ContextMenuContainer>
       </div>
     </div>
   )
