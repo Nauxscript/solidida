@@ -2,7 +2,7 @@ import { type ParentComponent, createUniqueId } from 'solid-js'
 import { useListContext } from './ListContext'
 
 export interface ListItemProps {
-  id?: number | string
+  id?: string
   isActived?: boolean
   icon?: string
   showOption?: boolean
@@ -25,7 +25,7 @@ export const ListItem: ParentComponent<ListItemProps> = (props) => {
   const isActived = createMemo(() => {
     if (context.activedKey === undefined)
       return context.activedItem()?.id === defaultProps.id
-    return context.activedKey() === defaultProps.id
+    return context.activedKey === defaultProps.id
   })
 
   const normalizeCount = (count: number | undefined) => {

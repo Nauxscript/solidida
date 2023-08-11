@@ -1,11 +1,12 @@
-import type { Accessor, ParentProps } from 'solid-js'
-import type { ListItemProps } from '../ListItem'
+import type { ParentProps } from 'solid-js'
 import type { ListContextValue } from './ListContext'
 import { ListContext } from './ListContext'
+import type { ListItemProps } from './ListItem'
 
 export interface ListRootProps {
-  onSelect: (key: ListItemProps['id']) => void
-  activedKey?: Accessor<number | string>
+  onSelect: (key: Exclude<ListItemProps['id'], undefined>) => void
+  // activedKey?: Accessor<string | undefined>
+  activedKey?: string
 }
 
 export function ListRoot(props: ParentProps<ListRootProps>) {
