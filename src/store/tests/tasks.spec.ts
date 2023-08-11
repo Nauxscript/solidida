@@ -19,8 +19,7 @@ describe('Task Store', () => {
   })
   test('should add task', () => {
     createRoot(() => {
-      const tasks = useTasksStore(state => state.tasks)
-      const addTask = useTasksStore(state => state.addTask)
+      const [tasks, addTask] = useTasksStore(state => [state.tasks, state.addTask])
       const taskTitle = '吃饭'
       const task = addTask(taskTitle)
       expect(task?.title).toBe(taskTitle)
@@ -33,8 +32,7 @@ describe('Task Store', () => {
     createRoot(() => {
       const setCurrentSeletor = useTasksSelectorStore(state => state.setCurrentSeletor)
       setCurrentSeletor(null)
-      const tasks = useTasksStore(state => state.tasks)
-      const addTask = useTasksStore(state => state.addTask)
+      const [tasks, addTask] = useTasksStore(state => [state.tasks, state.addTask])
       const taskTitle = '吃饭'
       const task = addTask(taskTitle)
       expect(task).toBeUndefined()
@@ -44,13 +42,13 @@ describe('Task Store', () => {
 
   test('should remove task', () => {
     createRoot(() => {
-      const tasks = useTasksStore(state => state.tasks)
-      const addTask = useTasksStore(state => state.addTask)
-      const removeTask = useTasksStore(state => state.removeTask)
+      const [tasks, addTask, removeTask] = useTasksStore(state => [state.tasks, state.addTask, state.removeTask])
       const taskTitle = '吃饭'
       const task = addTask(taskTitle)
       removeTask(task!)
       expect(tasks.length).toBe(0)
     })
   })
+
+  test.todo('should complete task')
 })
