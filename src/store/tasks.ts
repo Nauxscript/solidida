@@ -1,4 +1,5 @@
 import create from 'solid-zustand'
+import { useTasksSelectorStore } from './taskSelector'
 
 export enum TaskStatus {
   ACTIVE = 'ACTIVE',
@@ -49,7 +50,7 @@ const fakeData = [{
 
 interface TasksStore {
   tasks: Task[]
-  addTask: (title: string) => Task
+  addTask: (title: string) => Task | void
   removeTask: (targetTask: Task) => void
   updateTasks: (tasks: Task[]) => void
 }
@@ -68,7 +69,11 @@ const createTask = (title: string, projectId = ''): Task => ({
 export const useTasksStore = create<TasksStore>(set => ({
   tasks: [],
   addTask: (title) => {
-    const task = createTask(title)
+    const currentSelector = useTasksSelectorStore.getState().currentSelector
+    if (!currentSelector)
+      return
+    const task = createTask(title, currentSelector.id)
+
     set(state => ({
       tasks: [...state.tasks, task],
     }))
