@@ -2,7 +2,7 @@
 import List from '../List'
 import ToggleButton from '../ToggleButton'
 import type { BaseProject } from '@/store'
-import { concludedProjectBaseData, smartProjectBaseData, useListProjectsStore } from '@/store'
+import { concludedProjectBaseData, useListProjectsStore, useSmartProjectsStore } from '@/store'
 import { useTasksSelectorStore } from '@/store/taskSelector'
 
 interface ArchiveProps {
@@ -11,6 +11,7 @@ interface ArchiveProps {
 const Archive = (props: ArchiveProps) => {
   const [currentSelector, setCurrentSeletor] = useTasksSelectorStore(state => [state.currentSelector, state.setCurrentSeletor])
   const listProjects = useListProjectsStore(state => state.projects)
+  const [smartProjects] = useSmartProjectsStore(state => [state.smartProjects])
   const [activedKey, setActivedKey] = createSignal(currentSelector?.id)
 
   const handleSelect = (key: string, projects: BaseProject[]) => {
@@ -22,8 +23,8 @@ const Archive = (props: ArchiveProps) => {
   return (
     <section w-full h-full flex-col-box>
       <section>
-        <List.Root onSelect={key => handleSelect(key, smartProjectBaseData)} activedKey={activedKey()}>
-          <For each={smartProjectBaseData} fallback={'loading'}>
+        <List.Root onSelect={key => handleSelect(key, smartProjects)} activedKey={activedKey()}>
+          <For each={smartProjects} fallback={'loading'}>
             {item => (<List.Item icon={item.icon} showOption={item.showOption} count={item.count} id={item.id}>{item.name}</List.Item>)}
           </For>
         </List.Root>

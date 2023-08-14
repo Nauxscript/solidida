@@ -1,3 +1,4 @@
+import create from 'solid-zustand'
 import type { BaseProject } from './listProjects'
 import { ProjectType } from './listProjects'
 
@@ -16,6 +17,14 @@ export interface SmartProject extends BaseProject {
   type: ProjectType.SMART_PROJECT
   count: number
   icon: string
+}
+
+export interface SmartProjectStore {
+  smartProjects: SmartProject[]
+}
+
+interface Actions {
+
 }
 
 const iconMap: Record<SmartProjectKeys, string> = {
@@ -41,10 +50,12 @@ export const sevenDaysProject = createSmartProjectBaseData('最近7天', SmartPr
 export const assignedProject = createSmartProjectBaseData('指派给我', SmartProjectKeys.ASSIGNED)
 export const collectedProject = createSmartProjectBaseData('收集箱', SmartProjectKeys.COLLECTED)
 
-export const smartProjectBaseData = [
-  todayProject,
-  tomorrowProject,
-  sevenDaysProject,
-  assignedProject,
-  collectedProject,
-]
+export const useSmartProjectsStore = create<SmartProjectStore & Actions>(() => ({
+  smartProjects: [
+    todayProject,
+    tomorrowProject,
+    sevenDaysProject,
+    assignedProject,
+    collectedProject,
+  ],
+}))
