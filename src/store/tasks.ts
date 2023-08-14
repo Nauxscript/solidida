@@ -35,7 +35,7 @@ interface Actions {
   setActiveTask: (task: Task | undefined) => void
 }
 
-const createTask = (title: string, projectId = ''): Task => ({
+export const createTask = (title: string, projectId = ''): Task => ({
   id: Date.now().toString(),
   projectId,
   position: 0,

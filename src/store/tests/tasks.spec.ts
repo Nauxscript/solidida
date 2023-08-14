@@ -1,6 +1,6 @@
 import { describe } from 'vitest'
 import { createRoot } from 'solid-js'
-import { TaskStatus, useTasksStore } from '../tasks'
+import { TaskStatus, createTask, useTasksStore } from '../tasks'
 import { ProjectType } from '../listProjects'
 import { useTasksSelectorStore } from './../taskSelector'
 
@@ -19,13 +19,11 @@ describe('Task Store', () => {
   })
   test('should add task', () => {
     createRoot(() => {
-      const taskStore = useTasksStore()
       const [tasks, addTask] = useTasksStore(state => [state.tasks, state.addTask])
       const taskTitle = '吃饭'
       const task = addTask(taskTitle)
       expect(task?.title).toBe(taskTitle)
       expect(task?.status).toBe(TaskStatus.ACTIVE)
-      expect(task).toEqual(taskStore.activeTask)
       expect(tasks[tasks.length - 1].title).toBe(taskTitle)
       expect(task?.projectId).toBe('1')
     })
@@ -83,6 +81,15 @@ describe('Task Store', () => {
       completeTask(task!)
       undoCompleteTask(task!)
       expect(task!.status).toBe(TaskStatus.ACTIVE)
+    })
+  })
+
+  test('should set active task', () => {
+    createRoot(() => {
+      const task = createTask('睡觉')
+      const [setActiveTask, taskStore] = useTasksStore(state => [state.setActiveTask, state])
+      setActiveTask(task)
+      expect(task).toEqual(taskStore.activeTask)
     })
   })
 })
