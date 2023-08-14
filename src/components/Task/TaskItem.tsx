@@ -19,7 +19,7 @@ export const TaskItem: Component<TaskItemProps> = (props) => {
         </Checkbox.Control>
       </Checkbox.Root>
       <div h-full flex-1 text-gray-7 flex items-center border="0 b-1 solid gray-1">
-        <div>{props.title}</div>
+        <div flex-1>{props.title}</div>
         <div>tag</div>
         <div>list</div>
       </div>
