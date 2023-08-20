@@ -1,5 +1,5 @@
 import userEvent from '@testing-library/user-event'
-import { useCommandModal } from '../'
+import { useCommandModal, useSearch } from '../'
 import { mockPlatform } from '@/test/helper'
 describe('Command Modal', () => {
   beforeEach(() => {
@@ -56,6 +56,17 @@ describe('Command Modal', () => {
         await user.keyboard('{Meta>}k/')
         expect(commandModalVisible()).toBe(false)
       })
+    })
+  })
+
+  describe('basic search', () => {
+    test('', () => {
+      const { openCommandModal } = useCommandModal()
+      const { search, filterTasks } = useSearch()
+      openCommandModal()
+      const keyword = '吃饭'
+      search(keyword)
+      expect(filterTasks()[0].title).toBe(keyword)
     })
   })
 })
