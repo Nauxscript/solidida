@@ -29,6 +29,7 @@ describe('Command Modal', () => {
     closeCommandModal()
     // clear platform mock
     mockPlatform('')
+    vi.clearAllMocks()
   })
   describe('basic control of command modal', () => {
     test('open command modal', () => {
@@ -93,14 +94,14 @@ describe('Command Modal', () => {
       })
     })
 
-    test.todo('search command', () => {
+    test.todo('command search', () => {
       createRoot(async () => {
         const { openCommandModal } = useCommandModal()
         const { search, filterTasks } = useSearch()
         openCommandModal()
         const keyword = '> '
         await search(keyword)
-        expect(filterTasks()[0].title).toBe(keyword)
+        expect(filterTasks.length).toBe(1)
       })
     })
   })
