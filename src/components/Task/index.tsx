@@ -84,7 +84,7 @@ export const Tasks: Component<{}> = (props) => {
               <ToggleButton id={item.id} title={item.name} index={index} showTrigger={true} hoverEffect={false} expanded={true}>
                 <For each={tasks}>
                   {task => (
-                    <TaskItem title={task.title} onChange={checkStatus => handleCheck(checkStatus, task)} onContextMenu={() => handleContextMenu(task)}></TaskItem>
+                    <TaskItem isActived={task === taskStore.activeTask} title={task.title} onChange={checkStatus => handleCheck(checkStatus, task)} onContextMenu={() => handleContextMenu(task)} onClick={() => setActiveTask(task)}></TaskItem>
                   )}
                 </For>
               </ToggleButton>
