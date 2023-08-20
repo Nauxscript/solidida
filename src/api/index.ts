@@ -21,3 +21,11 @@ export const loadConcludedProjectTasks = async () => {
     data: [] as Task[],
   })
 }
+
+export const findAllTask = async (keyword: string) => {
+  // wip
+
+  return Promise.resolve({
+    data: [] as Task[],
+  })
+}

@@ -1,6 +1,28 @@
 import userEvent from '@testing-library/user-event'
+import { vi } from 'vitest'
 import { useCommandModal, useSearch } from '../'
 import { mockPlatform } from '@/test/helper'
+import type { Task } from '@/store'
+import { TaskStatus } from '@/store'
+import { findAllTask } from '@/api'
+
+vi.mock('@/api')
+
+const findAllTaskResponse = (keyword: string): Task[] => ([{
+  title: keyword,
+  id: 'i',
+  status: TaskStatus.ACTIVE,
+  content: '',
+  tag: [],
+  projectId: '1',
+  position: 0,
+  createDate: new Date(),
+}])
+
+vi.mocked(findAllTask).mockImplementation(async (keyword: string) => ({
+  data: findAllTaskResponse(keyword),
+}))
+
 describe('Command Modal', () => {
   beforeEach(() => {
     const { closeCommandModal } = useCommandModal()
@@ -60,13 +82,26 @@ describe('Command Modal', () => {
   })
 
   describe('basic search', () => {
-    test('', () => {
-      const { openCommandModal } = useCommandModal()
-      const { search, filterTasks } = useSearch()
-      openCommandModal()
-      const keyword = '吃饭'
-      search(keyword)
-      expect(filterTasks()[0].title).toBe(keyword)
+    test('search task', () => {
+      createRoot(async () => {
+        const { openCommandModal } = useCommandModal()
+        const { search, filterTasks } = useSearch()
+        openCommandModal()
+        const keyword = '吃饭'
+        await search(keyword)
+        expect(filterTasks()[0].title).toBe(keyword)
+      })
+    })
+
+    test.todo('search command', () => {
+      createRoot(async () => {
+        const { openCommandModal } = useCommandModal()
+        const { search, filterTasks } = useSearch()
+        openCommandModal()
+        const keyword = '> '
+        await search(keyword)
+        expect(filterTasks()[0].title).toBe(keyword)
+      })
     })
   })
 })
