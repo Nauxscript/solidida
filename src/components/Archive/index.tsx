@@ -9,17 +9,21 @@ interface ArchiveProps {
 }
 
 const Archive = (props: ArchiveProps) => {
-  const [currentSelector, setCurrentSeletor] = useTasksSelectorStore(state => [state.currentSelector, state.setCurrentSeletor])
+  const taskSelectorStore = useTasksSelectorStore()
+  const [setCurrentSeletor] = useTasksSelectorStore(state => [state.setCurrentSeletor])
   const [concludedProjects] = useConcludedProjectsStore(state => [state.concludedProjects])
   const listProjects = useListProjectsStore(state => state.projects)
   const [smartProjects] = useSmartProjectsStore(state => [state.smartProjects])
-  const [activedKey, setActivedKey] = createSignal(currentSelector?.id)
+  const [activedKey, setActivedKey] = createSignal(taskSelectorStore.currentSelector?.id)
 
   const handleSelect = (key: string, projects: BaseProject[]) => {
     const project = projects.find(p => p.id === key)
-    setActivedKey(project?.id)
     setCurrentSeletor(project)
   }
+
+  createEffect(() => {
+    setActivedKey(() => taskSelectorStore.currentSelector?.id)
+  })
 
   return (
     <section w-full h-full flex-col-box>

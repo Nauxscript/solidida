@@ -49,7 +49,7 @@ const TooltipLiContent = (props: ParentProps<{
 
 export default function Navbar() {
   const { currHref, handleNavigate } = useGoto()
-  const { openCommandModal, commandModalVisible, setCommandModalVisible, registerKeyboardShortcut, toggleCommandModal } = useCommandModal()
+  const { openCommandModal, closeCommandModal, commandModalVisible, setCommandModalVisible, registerKeyboardShortcut, toggleCommandModal } = useCommandModal()
   const { filterTasks, search } = useSearch()
 
   registerKeyboardShortcut()
@@ -65,8 +65,10 @@ export default function Navbar() {
   console.log(filterTasks())
 
   const handleCommand = (command: Task | Command) => {
-    if ('execute' in command)
+    if ('execute' in command) {
       command.execute()
+      closeCommandModal()
+    }
   }
 
   return (
