@@ -1,32 +1,50 @@
 import { createSignal } from 'solid-js'
-import type { Task } from '../../store'
 import { useSearchTasks } from './searchTasks'
-import type { Command } from '@/hooks/useCommand'
+import { useSearchCommand } from './searchCommand'
+import type { Task } from '@/store'
+import type { Command } from '@/hooks/command/useCommand'
+
 const [filterTasks, setFilterTasks] = createSignal<Array<Task | Command>>([])
+const [loading, setLoading] = createSignal(false)
 
 export const useSearch = () => {
   const { searchTasks } = useSearchTasks()
+  const { searchCommands, allCommands } = useSearchCommand()
+
+  const resetSearch = () => {
+    setLoading(false)
+    setFilterTasks(allCommands())
+  }
 
   const search = async (keyword: string) => {
+    if (loading())
+      return
+    setLoading(true)
     if (keyword.startsWith('> ')) {
-      setFilterTasks([{
-        title: '',
-        id: '1',
-        type: 'COMMAND',
-        execute() {
-          // eslint-disable-next-line no-console
-          console.log('command')
-        },
-      }])
+      const commandStr = keyword.match(/(?<=\>\s).*$/gm)?.[0]
+      if (commandStr) {
+        const commandsResult = searchCommands(commandStr)
+        setFilterTasks(commandsResult)
+      }
+      else {
+        resetSearch()
+      }
+
+      setLoading(false)
     }
     else {
+      if (!loading())
+        return
       const data = await searchTasks(keyword)
       setFilterTasks(data)
+      setLoading(false)
     }
   }
 
   return {
     search,
+    loading,
     filterTasks,
+    resetSearch,
   }
 }

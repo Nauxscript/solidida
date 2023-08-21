@@ -3,7 +3,7 @@ import { vi } from 'vitest'
 import { useCommandModal, useSearch } from '../'
 import { mockPlatform } from '@/test/helper'
 import type { Task } from '@/store'
-import { TaskStatus } from '@/store'
+import { TaskStatus, useConcludedProjectsStore, useSmartProjectsStore } from '@/store'
 import { findAllTask } from '@/api'
 
 vi.mock('@/api')
@@ -38,8 +38,12 @@ describe('Command Modal', () => {
     test('open command modal', () => {
       createRoot(() => {
         const { openCommandModal, commandModalVisible } = useCommandModal()
+        const { filterTasks } = useSearch()
+        const smartProjectsStore = useSmartProjectsStore()
+        const concludedProjectsStore = useConcludedProjectsStore()
         openCommandModal()
         expect(commandModalVisible()).toBe(true)
+        expect(filterTasks().length).toEqual(smartProjectsStore.smartProjects.length + concludedProjectsStore.concludedProjects.length)
       })
     })
 
@@ -108,9 +112,23 @@ describe('Command Modal', () => {
         const { openCommandModal } = useCommandModal()
         const { search, filterTasks } = useSearch()
         openCommandModal()
-        const keyword = '> '
+        const command = '明天'
+        const keyword = `> ${command}`
         await search(keyword)
-        expect(filterTasks().length).toBe(1)
+        expect(filterTasks()[0].title).toBe(command)
+      })
+    })
+
+    test('search loading', () => {
+      createRoot(async () => {
+        const { openCommandModal } = useCommandModal()
+        const { search, loading } = useSearch()
+        openCommandModal()
+        expect(loading()).toBeFalsy()
+        search('吃饭')
+        expect(loading()).toBeTruthy()
+        await new Promise(resolve => setTimeout(resolve))
+        expect(loading()).toBeFalsy()
       })
     })
   })
