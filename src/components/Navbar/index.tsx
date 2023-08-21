@@ -1,8 +1,11 @@
 import { Dialog, Tooltip } from '@kobalte/core'
 import type { ParentProps } from 'solid-js'
 import { createShortcut } from '@solid-primitives/keyboard'
-import { useCommandModal } from '../Command'
+import { useCommandModal, useSearch } from '../Command'
+import List from '../List'
 import { goToGithub, useGoto } from '@/hooks/useGoto'
+import type { Command } from '@/hooks/command/useCommand'
+import type { Task } from '@/store'
 
 interface NavRouteItem {
   name: string
@@ -47,6 +50,8 @@ const TooltipLiContent = (props: ParentProps<{
 export default function Navbar() {
   const { currHref, handleNavigate } = useGoto()
   const { openCommandModal, commandModalVisible, setCommandModalVisible, registerKeyboardShortcut, toggleCommandModal } = useCommandModal()
+  const { filterTasks, search } = useSearch()
+
   registerKeyboardShortcut()
 
   // shortcut for temporary use
@@ -55,6 +60,14 @@ export default function Navbar() {
   }, {
     preventDefault: true,
   })
+
+  // eslint-disable-next-line no-console
+  console.log(filterTasks())
+
+  const handleCommand = (command: Task | Command) => {
+    if ('execute' in command)
+      command.execute()
+  }
 
   return (
     <>
@@ -85,25 +98,23 @@ export default function Navbar() {
       <Dialog.Portal>
         <Dialog.Overlay class="dialog__overlay" />
         <div top-0 left-0 flex-both-center fixed z-999 h-full w-full>
-          <Dialog.Content class="flex-col-box h-450px w-720px dialog-shadow bg-white rounded-2 p-4 box-border">
-            <div class="" relative>
+          <Dialog.Content class="flex-col-box h-450px w-720px dialog-shadow bg-white rounded-2  box-border">
+            <div relative p-4 pb-0>
               <Dialog.Title class='m-0 mb-2 flex h-8 relative'>
-                <input type="text" name="" id="" border="t-0 x-0 solid b-1px" w-full h-full pr-28 text-4 font-normal focus="focus:shadow-none outline-none border-b-blue-2" />
+                <input type="text" name="" id="" border="t-0 x-0 solid b-1px" w-full h-full pr-14 text-4 font-normal focus="focus:shadow-none outline-none border-b-blue-2" onInput={(e) => { search(e.target.value) }}/>
                 {/* <i i-carbon-mac-command right-8 text-4 class='top-1.6 absolute'></i> */}
-                <span right-12 text-4 text-gray-4 class='top-1.2 absolute'>⌘ + ;</span>
+                <span right-2 text-4 text-gray-4 class='top-1.2 absolute'>⌘ + ;</span>
               </Dialog.Title>
-              <Dialog.CloseButton class="absolute right-1 top-1 flex hover:text-blue-6 cursor-pointer">
+              {/* <Dialog.CloseButton class="absolute right-6 top-4 flex hover:text-blue-6 cursor-pointer">
                 <i i-carbon-close w-6 h-6></i>
-              </Dialog.CloseButton>
+              </Dialog.CloseButton> */}
             </div>
-            <Dialog.Description class="dialog__description">
-              <ul>
-                <li>1234</li>
-                <li>1234</li>
-                <li>1234</li>
-                <li>1234</li>
-                <li>1234</li>
-              </ul>
+            <Dialog.Description class="m-0">
+              <List.Root>
+              <For each={filterTasks()} fallback={'loading'}>
+                {item => (<List.Item onClick={() => handleCommand(item) }>{item.title}</List.Item>)}
+              </For>
+              </List.Root>
             </Dialog.Description>
           </Dialog.Content>
         </div>

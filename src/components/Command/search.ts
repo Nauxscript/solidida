@@ -22,8 +22,17 @@ export const useSearch = () => {
   }
 
   const search = async (keyword: string) => {
+    // eslint-disable-next-line no-console
+    console.log(keyword)
+    // eslint-disable-next-line no-console
+    console.log(loading())
     if (loading())
       return
+    if (!keyword) {
+      resetSearch()
+      return
+    }
+
     setLoading(true)
     if (keyword.startsWith('> ')) {
       const commandStr = keyword.match(/(?<=\>\s).*$/gm)?.[0]
