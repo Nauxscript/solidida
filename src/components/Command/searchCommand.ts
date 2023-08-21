@@ -11,7 +11,10 @@ export const useSearchCommand = () => {
   const { smartProjectCommand, addProjectCommand } = useCommand()
   const smartProjects = useSmartProjectsStore(state => state.smartProjects)
   const concludedProjects = useConcludedProjectsStore(state => state.concludedProjects)
-  addProjectCommand([...smartProjects, ...concludedProjects])
+
+  const initCommand = () => {
+    addProjectCommand([...smartProjects, ...concludedProjects])
+  }
 
   const searchCommands = (keyword: string) => {
     fuse.setCollection(smartProjectCommand())
@@ -20,6 +23,7 @@ export const useSearchCommand = () => {
   }
 
   return {
+    initCommand,
     searchCommands,
     allCommands: smartProjectCommand,
   }

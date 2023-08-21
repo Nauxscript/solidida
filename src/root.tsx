@@ -7,8 +7,12 @@ import './style.css'
 // import 'uno.css'
 import 'virtual:uno.css'
 import BaseLayout from './layouts/BaseLayout'
+import { useSearch } from './components/Command'
 
 export default function Root() {
+  const { initSearch } = useSearch()
+  initSearch()
+
   return (
     <Html lang="en">
       <Head>

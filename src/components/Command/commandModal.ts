@@ -1,6 +1,7 @@
 import { createSignal } from 'solid-js'
 import { createShortcut } from '@solid-primitives/keyboard'
 import { useSearch } from './search'
+import { useSearchCommand } from './searchCommand'
 import { useIsMac } from '@/hooks/misc'
 const [commandModalVisible, setCommandModalVisible] = createSignal(false)
 
@@ -9,6 +10,7 @@ const shortcutOfMac = ['Meta', 'k']
 const shortcutOfWin = ['Control', 'k']
 
 export const useCommandModal = () => {
+  const { initCommand } = useSearchCommand()
   const { resetSearch } = useSearch()
 
   const openCommandModal = () => {

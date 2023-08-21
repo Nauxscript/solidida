@@ -28,8 +28,9 @@ describe('Command Modal', () => {
     createRoot(() => {
       const { closeCommandModal } = useCommandModal()
       closeCommandModal()
+      const { initSearch } = useSearch()
+      initSearch()
     })
-
     // clear platform mock
     mockPlatform('')
     vi.clearAllMocks()

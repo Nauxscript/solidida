@@ -9,10 +9,15 @@ const [loading, setLoading] = createSignal(false)
 
 export const useSearch = () => {
   const { searchTasks } = useSearchTasks()
-  const { searchCommands, allCommands } = useSearchCommand()
+  const { searchCommands, allCommands, initCommand } = useSearchCommand()
 
   const resetSearch = () => {
     setLoading(false)
+    setFilterTasks(allCommands())
+  }
+
+  const initSearch = () => {
+    initCommand()
     setFilterTasks(allCommands())
   }
 
@@ -42,6 +47,7 @@ export const useSearch = () => {
   }
 
   return {
+    initSearch,
     search,
     loading,
     filterTasks,
