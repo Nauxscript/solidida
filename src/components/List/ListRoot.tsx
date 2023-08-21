@@ -4,7 +4,7 @@ import { ListContext } from './ListContext'
 import type { ListItemProps } from './ListItem'
 
 export interface ListRootProps {
-  onSelect: (key: Exclude<ListItemProps['id'], undefined>) => void
+  onSelect?: (key: Exclude<ListItemProps['id'], undefined>) => void
   // activedKey?: Accessor<string | undefined>
   activedKey?: string
   allowCancel?: boolean

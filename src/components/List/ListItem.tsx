@@ -8,6 +8,7 @@ export interface ListItemProps {
   showOption?: boolean
   count?: number
   showZero?: boolean
+  onClick?: (id?: string) => void
 }
 
 export const OPTION_ICON_NAME = 'i-carbon-overflow-menu-horizontal'
@@ -34,6 +35,7 @@ export const ListItem: ParentComponent<ListItemProps> = (props) => {
       context.setActivedItem(defaultProps)
       context.onSelect?.(defaultProps.id)
     }
+    props.onClick?.(props.id)
   }
 
   const normalizeCount = (count: number | undefined) => {
