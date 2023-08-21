@@ -25,24 +25,31 @@ vi.mocked(findAllTask).mockImplementation(async (keyword: string) => ({
 
 describe('Command Modal', () => {
   beforeEach(() => {
-    const { closeCommandModal } = useCommandModal()
-    closeCommandModal()
+    createRoot(() => {
+      const { closeCommandModal } = useCommandModal()
+      closeCommandModal()
+    })
+
     // clear platform mock
     mockPlatform('')
     vi.clearAllMocks()
   })
   describe('basic control of command modal', () => {
     test('open command modal', () => {
-      const { openCommandModal, commandModalVisible } = useCommandModal()
-      openCommandModal()
-      expect(commandModalVisible()).toBe(true)
+      createRoot(() => {
+        const { openCommandModal, commandModalVisible } = useCommandModal()
+        openCommandModal()
+        expect(commandModalVisible()).toBe(true)
+      })
     })
 
     test('close command modal', () => {
-      const { openCommandModal, closeCommandModal, commandModalVisible } = useCommandModal()
-      openCommandModal()
-      closeCommandModal()
-      expect(commandModalVisible()).toBe(false)
+      createRoot(() => {
+        const { openCommandModal, closeCommandModal, commandModalVisible } = useCommandModal()
+        openCommandModal()
+        closeCommandModal()
+        expect(commandModalVisible()).toBe(false)
+      })
     })
 
     test('cmd + k to ativate command modal on MacOS', async () => {
