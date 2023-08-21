@@ -9,7 +9,6 @@ export const useSearch = () => {
 
   const search = async (keyword: string) => {
     if (keyword.startsWith('> ')) {
-      // wip
       setFilterTasks([{
         title: '',
         id: '1',

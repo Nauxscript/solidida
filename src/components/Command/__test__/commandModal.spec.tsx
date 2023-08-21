@@ -90,18 +90,20 @@ describe('Command Modal', () => {
         openCommandModal()
         const keyword = '吃饭'
         await search(keyword)
+        // eslint-disable-next-line no-console
+        console.log('fuck')
         expect(filterTasks()[0].title).toBe(keyword)
       })
     })
 
-    test.todo('command search', () => {
+    test('command search', () => {
       createRoot(async () => {
         const { openCommandModal } = useCommandModal()
         const { search, filterTasks } = useSearch()
         openCommandModal()
         const keyword = '> '
         await search(keyword)
-        expect(filterTasks.length).toBe(1)
+        expect(filterTasks().length).toBe(1)
       })
     })
   })
