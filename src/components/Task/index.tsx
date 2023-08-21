@@ -5,6 +5,7 @@ import { TaskItem } from './TaskItem'
 import { useMainLayoutContext } from '@/layouts/MainLayoutContext'
 import { useTasksStore } from '@/store/tasks'
 import type { Task } from '@/store'
+import { useTasksSelectorStore } from '@/store/taskSelector'
 
 const headerOperations = [{
   name: 'sort',
@@ -23,6 +24,7 @@ export const Tasks: Component<{}> = (props) => {
   const { toggleArchivePanel, archiveShow } = useMainLayoutContext()
   const [inputValue, setInputValue] = createSignal('')
 
+  const taskSelectorStore = useTasksSelectorStore()
   const tasks = useTasksStore(state => state.tasks)
   const taskStore = useTasksStore()
   const [addTask, completeTask, undoCompleteTask, setActiveTask, removeTask] = useTasksStore(state => [state.addTask, state.completeTask, state.undoCompleteTask, state.setActiveTask, state.removeTask])
@@ -62,7 +64,7 @@ export const Tasks: Component<{}> = (props) => {
             <i i-carbon-side-panel-close></i>
           </Show>
         </div>
-        <h5 flex flex-1 m-0 text-7 lh-relaxed>#this is fucking title</h5>
+        <h5 flex flex-1 m-0 text-6 lh-relaxed>{taskSelectorStore.currentSelector?.name}</h5>
         <For each={headerOperations}>
           {item => (
             <div p-1 hover:bg-gray-1 cursor-pointer>
