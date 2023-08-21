@@ -1,3 +1,4 @@
+/// <reference types="vitest" />
 import path from 'path'
 import { defineConfig } from 'vite'
 import Solid from 'solid-start/vite'
@@ -10,15 +11,24 @@ import vercelAdapter from 'solid-start-vercel'
 export default defineConfig({
   test: {
     deps: {
-      registerNodeLoader: true,
-      inline: [/solid-js/],
+      // registerNodeLoader: true,
+      // optimizer: {
+      //   web: {
+      //     include:
+      //   }
+      // }
     },
     // https://github.com/capricorn86/happy-dom/issues/994
     environment: 'happy-dom',
     // environment: 'jsdom',
     globals: true,
+    server: {
+      deps: {
+        inline: [/solid-js/],
+      },
+    },
     setupFiles: ['node_modules/@testing-library/jest-dom/extend-expect', './setupVitest.js'],
-    transformMode: { web: [/\.[jt]sx?$/] },
+    // transformMode: { web: [/\.[jt]sx?$/] },
     // css: true,
   },
   resolve: {
