@@ -7,6 +7,7 @@ export interface ListContextValue {
   setActivedItem: (item: ListItemProps | undefined) => void
   onSelect?: ListRootProps['onSelect']
   activedKey?: () => ListItemProps['id']
+  allowCancel?: boolean
 }
 
 export const ListContext = createContext<ListContextValue>()

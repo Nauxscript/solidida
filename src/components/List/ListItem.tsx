@@ -26,13 +26,14 @@ export const ListItem: ParentComponent<ListItemProps> = (props) => {
   })
 
   const handleClick = () => {
-    if (isActived()) {
+    if (isActived() && context.allowCancel) {
       context.setActivedItem(undefined)
       context.onSelect?.('')
-      return
     }
-    context.setActivedItem(defaultProps)
-    context.onSelect?.(defaultProps.id)
+    else {
+      context.setActivedItem(defaultProps)
+      context.onSelect?.(defaultProps.id)
+    }
   }
 
   const normalizeCount = (count: number | undefined) => {

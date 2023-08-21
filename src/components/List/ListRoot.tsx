@@ -7,6 +7,7 @@ export interface ListRootProps {
   onSelect: (key: Exclude<ListItemProps['id'], undefined>) => void
   // activedKey?: Accessor<string | undefined>
   activedKey?: string
+  allowCancel?: boolean
 }
 
 export function ListRoot(props: ParentProps<ListRootProps>) {
@@ -16,6 +17,7 @@ export function ListRoot(props: ParentProps<ListRootProps>) {
     setActivedItem,
     onSelect: props.onSelect,
     activedKey: () => props.activedKey,
+    allowCancel: props.allowCancel,
   }
   return (
     <ListContext.Provider value={context}>
