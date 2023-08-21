@@ -87,8 +87,10 @@ export default function Navbar() {
         <div top-0 left-0 flex-both-center fixed z-999 h-full w-full>
           <Dialog.Content class="flex-col-box h-450px w-720px dialog-shadow bg-white rounded-2 p-4 box-border">
             <div class="" relative>
-              <Dialog.Title class='m-0 mb-2 flex h-8'>
-                <input type="text" name="" id="" border="t-0 x-0 solid b-1px" w-full h-full pr-8 text-4 font-normal focus="focus:shadow-none outline-none border-b-blue-2" />
+              <Dialog.Title class='m-0 mb-2 flex h-8 relative'>
+                <input type="text" name="" id="" border="t-0 x-0 solid b-1px" w-full h-full pr-28 text-4 font-normal focus="focus:shadow-none outline-none border-b-blue-2" />
+                {/* <i i-carbon-mac-command right-8 text-4 class='top-1.6 absolute'></i> */}
+                <span right-12 text-4 text-gray-4 class='top-1.2 absolute'>⌘ + ;</span>
               </Dialog.Title>
               <Dialog.CloseButton class="absolute right-1 top-1 flex hover:text-blue-6 cursor-pointer">
                 <i i-carbon-close w-6 h-6></i>
