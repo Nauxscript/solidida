@@ -102,8 +102,6 @@ describe('Command Modal', () => {
         openCommandModal()
         const keyword = '吃饭'
         await search(keyword)
-        // eslint-disable-next-line no-console
-        console.log('fuck')
         expect(filterTasks()[0].title).toBe(keyword)
       })
     })

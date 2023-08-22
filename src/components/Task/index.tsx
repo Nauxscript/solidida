@@ -41,8 +41,6 @@ export const Tasks: Component<{}> = (props) => {
       completeTask(task)
     else
       undoCompleteTask(task)
-    // eslint-disable-next-line no-console
-    console.log(task)
   }
 
   const handleContextMenu = (task: Task) => {
@@ -50,8 +48,6 @@ export const Tasks: Component<{}> = (props) => {
   }
 
   const handleCommand = (commmand: Commands) => {
-    // eslint-disable-next-line no-console
-    console.log(commmand)
     if (commmand === Commands.REMOVE)
       taskStore.activeTask && removeTask(taskStore.activeTask)
   }

@@ -64,9 +64,6 @@ export default function Navbar() {
     preventDefault: true,
   })
 
-  // eslint-disable-next-line no-console
-  console.log(filterTasks())
-
   const handleCommand = (command: Task | Command) => {
     if ('execute' in command) {
       command.execute()

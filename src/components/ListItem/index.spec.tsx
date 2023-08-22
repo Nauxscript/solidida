@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { describe, vi } from 'vitest'
 import { cleanup, render, screen } from '@solidjs/testing-library'
 import userEvent from '@testing-library/user-event'
@@ -55,7 +54,7 @@ describe('Component: ListItem', () => {
 
     await user.hover(ele)
     const style = getComputedStyle(toolBtn)
-    console.log(style)
+    // console.log(style)
     // const _style = getComputedStyle(ele)
     // console.log(_style)
     // somthing wrong ....

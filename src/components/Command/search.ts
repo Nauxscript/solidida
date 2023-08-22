@@ -22,10 +22,6 @@ export const useSearch = () => {
   }
 
   const search = async (keyword: string) => {
-    // eslint-disable-next-line no-console
-    console.log(keyword)
-    // eslint-disable-next-line no-console
-    console.log(loading())
     if (loading())
       return
     if (!keyword) {

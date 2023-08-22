@@ -53,8 +53,6 @@ export default function useDividerDrag(leftEleRef: Accessor<HTMLDivElement | und
   }
 
   const upHandler = () => {
-    // eslint-disable-next-line no-console
-    console.log('up')
     currEvent = undefined
     currEleFlag = undefined
     document.body.style.userSelect = 'auto'
