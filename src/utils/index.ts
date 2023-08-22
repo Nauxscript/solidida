@@ -10,16 +10,17 @@ export const debounce = <T = unknown>(fn: (args: T) => void, time = 200) => {
   }
 }
 
-export const groupByKey = <T extends Record<string | symbol | number, any>>(data: T[], key: keyof T, options: {
+export const groupByKey = <T extends Record<string | symbol | number, any>>(data: T[], key: keyof T, format: 'Map' | 'Array' = 'Array', options: {
   groupFn?: (key: keyof T, group: T[]) => unknown
-  sortFn?: (prev: T, next: T) => number
-} = {}): T[][] | unknown[] => {
-  const { groupFn, sortFn } = options
+  filter?: (item: T) => boolean
+} = {}) => {
+  if (!data.length)
+    return format === 'Array' ? [] : new Map()
+  const { groupFn, filter } = options
 
-  if (sortFn)
-    data.sort(sortFn)
+  const filteredData = filter ? data.filter(filter) : data
 
-  const result = data.reduce((prev, curr) => {
+  const result = filteredData.reduce((prev, curr) => {
     const currKey = curr[key]
     if (prev.has(currKey)) {
       const group = prev.get(currKey)
@@ -30,6 +31,9 @@ export const groupByKey = <T extends Record<string | symbol | number, any>>(data
     }
     return prev
   }, new Map() as Map<string | symbol | number, T[]>)
+
+  if (format === 'Map')
+    return result
 
   return [...result].map(([key, group]) => {
     if (groupFn)
