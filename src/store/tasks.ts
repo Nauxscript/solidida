@@ -24,6 +24,13 @@ interface TasksStore {
   activeTask: Task | undefined
 }
 
+export const taskStatusNameMap: Record<TaskStatus, string> = {
+  ACTIVE: '未完成',
+  COMPLETED: '已完成',
+  REMOVED: '已删除',
+  ABANDONED: '已放弃',
+}
+
 interface Actions {
   addTask: (title: string) => Task | void
   removeTask: (targetTask: Task) => void
