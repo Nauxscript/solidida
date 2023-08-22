@@ -27,7 +27,7 @@ interface Actions {
 
 }
 
-const iconMap: Record<SmartProjectKeys, string> = {
+export const iconMap: Record<SmartProjectKeys, string> = {
   TODAY: 'i-carbon-calendar',
   TOMORROW: 'i-carbon-sunrise',
   SEVENDAYS: 'i-carbon-recently-viewed',
@@ -35,8 +35,16 @@ const iconMap: Record<SmartProjectKeys, string> = {
   COLLECTED: 'i-carbon-archive',
 }
 
-const createSmartProjectBaseData = (name: string, id: SmartProjectKeys): SmartProject => ({
-  name,
+export const SmartProjectNameMap: Record<SmartProjectKeys, string> = {
+  TODAY: '今天',
+  TOMORROW: '明天',
+  SEVENDAYS: '最近7天',
+  ASSIGNED: '指派给我',
+  COLLECTED: '收集箱',
+}
+
+const createSmartProjectBaseData = (id: SmartProjectKeys): SmartProject => ({
+  name: SmartProjectNameMap[id],
   id,
   showOption: true,
   type: ProjectType.SMART_PROJECT,
@@ -44,11 +52,11 @@ const createSmartProjectBaseData = (name: string, id: SmartProjectKeys): SmartPr
   icon: iconMap[id],
 })
 
-export const todayProject = createSmartProjectBaseData('今天', SmartProjectKeys.TODAY)
-export const tomorrowProject = createSmartProjectBaseData('明天', SmartProjectKeys.TOMORROW)
-export const sevenDaysProject = createSmartProjectBaseData('最近7天', SmartProjectKeys.SEVENDAYS)
-export const assignedProject = createSmartProjectBaseData('指派给我', SmartProjectKeys.ASSIGNED)
-export const collectedProject = createSmartProjectBaseData('收集箱', SmartProjectKeys.COLLECTED)
+export const todayProject = createSmartProjectBaseData(SmartProjectKeys.TODAY)
+export const tomorrowProject = createSmartProjectBaseData(SmartProjectKeys.TOMORROW)
+export const sevenDaysProject = createSmartProjectBaseData(SmartProjectKeys.SEVENDAYS)
+export const assignedProject = createSmartProjectBaseData(SmartProjectKeys.ASSIGNED)
+export const collectedProject = createSmartProjectBaseData(SmartProjectKeys.COLLECTED)
 
 export const useSmartProjectsStore = create<SmartProjectStore & Actions>(() => ({
   smartProjects: [
