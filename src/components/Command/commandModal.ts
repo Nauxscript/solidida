@@ -20,12 +20,11 @@ export const useCommandModal = () => {
     resetSearch()
   }
 
-  const toggleCommandModal = () => {
-    // setCommandModalVisible(prev => !prev)
-    if (commandModalVisible())
-      closeCommandModal()
-    else
+  const toggleCommandModal = (visible?: boolean) => {
+    if (visible === true || !commandModalVisible())
       openCommandModal()
+    else if (visible === false || commandModalVisible())
+      closeCommandModal()
   }
 
   const registerKeyboardShortcut = () => {

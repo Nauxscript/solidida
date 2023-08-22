@@ -52,7 +52,7 @@ const TooltipLiContent = (props: ParentProps<{
 
 export default function Navbar() {
   const { currHref, handleNavigate } = useGoto()
-  const { openCommandModal, closeCommandModal, commandModalVisible, setCommandModalVisible, registerKeyboardShortcut, toggleCommandModal } = useCommandModal()
+  const { openCommandModal, closeCommandModal, commandModalVisible, registerKeyboardShortcut, toggleCommandModal } = useCommandModal()
   const { loading, filterTasks, search } = useSearch()
 
   registerKeyboardShortcut()
@@ -101,7 +101,7 @@ export default function Navbar() {
 
       </div>
     </nav>
-    <Dialog.Root open={commandModalVisible()} onOpenChange={setCommandModalVisible} modal >
+    <Dialog.Root open={commandModalVisible()} onOpenChange={toggleCommandModal} modal >
       <Dialog.Portal>
         <Dialog.Overlay class="dialog__overlay" />
         <div top-0 left-0 flex-both-center fixed z-999 h-full w-full>
