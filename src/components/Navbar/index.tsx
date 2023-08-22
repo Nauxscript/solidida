@@ -8,6 +8,7 @@ import { Empty } from '../Empty'
 import { goToGithub, useGoto } from '@/hooks/useGoto'
 import type { Command } from '@/hooks/command/useCommand'
 import type { Task } from '@/store'
+import { debounce } from '@/utils'
 
 interface NavRouteItem {
   name: string
@@ -73,6 +74,11 @@ export default function Navbar() {
     }
   }
 
+  const handleChange = debounce((e: Event) => {
+    const target = e.target as HTMLInputElement
+    search(target.value)
+  })
+
   return (
     <>
     <nav h-full w-12 bg-blue-1 flex-col-box>
@@ -105,7 +111,7 @@ export default function Navbar() {
           <Dialog.Content class="flex-col-box h-450px w-720px dialog-shadow bg-white rounded-2  box-border">
             <div relative p-4 pb-0>
               <Dialog.Title class='m-0 mb-2 flex h-8 relative'>
-                <input type="text" name="" id="" border="t-0 x-0 solid b-1px" w-full h-full pr-14 text-4 font-normal focus="focus:shadow-none outline-none border-b-blue-2" onInput={(e) => { search(e.target.value) }}/>
+                <input type="text" name="" id="" border="t-0 x-0 solid b-1px" w-full h-full pr-14 text-4 font-normal focus="focus:shadow-none outline-none border-b-blue-2" onInput={handleChange}/>
                 {/* <i i-carbon-mac-command right-8 text-4 class='top-1.6 absolute'></i> */}
                 <span right-2 text-4 text-gray-4 class='top-1.2 absolute'>⌘ + ;</span>
               </Dialog.Title>
@@ -120,7 +126,6 @@ export default function Navbar() {
                     {item => (<List.Item onClick={() => handleCommand(item) }>{item.title}</List.Item>)}
                   </For>
                 </Show>
-
               </List.Root>
             </Dialog.Description>
           </Dialog.Content>
