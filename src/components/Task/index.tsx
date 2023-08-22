@@ -31,15 +31,9 @@ export const Tasks: Component<{}> = (props) => {
   const [addTask, completeTask, undoCompleteTask, setActiveTask, removeTask] = useTasksStore(state => [state.addTask, state.completeTask, state.undoCompleteTask, state.setActiveTask, state.removeTask])
 
   const taskGroups = createMemo(() => {
-    const res = groupByKey(tasks, 'status', {
-      groupFn: (key, group) => {
-        return {
-          name: taskStatusNameMap[key as TaskStatus],
-          key,
-          tasks: group,
-        }
-      },
-    }) as { name: string; key: string; tasks: Task[] }[]
+    const res = groupByKey(tasks, 'status', 'Map', {
+      filter: task => [TaskStatus.ACTIVE, TaskStatus.COMPLETED].includes(task.status),
+    }) as Map<TaskStatus, Task[]>
     return res
   })
 
@@ -88,17 +82,18 @@ export const Tasks: Component<{}> = (props) => {
       </div>
       <div flex-col-box>
         <ContextMenuContainer onCommand={handleCommand}>
-          <For each={taskGroups()}>
-            {(group, index) => (
-              <ToggleButton id={group.key} title={group.name} index={index} showTrigger={true} hoverEffect={false} expanded={true} hideTrigger={group.key === TaskStatus.ACTIVE}>
-                <For each={group.tasks}>
-                  {task => (
-                    <TaskItem taskStatus={task.status} isActived={task === taskStore.activeTask} title={task.title} onChange={checkStatus => handleCheck(checkStatus, task)} onContextMenu={() => handleContextMenu(task)} onClick={() => setActiveTask(task)}></TaskItem>
-                  )}
-                </For>
-              </ToggleButton>
+          <For each={taskGroups().get(TaskStatus.ACTIVE)}>
+            {task => (
+              <TaskItem taskStatus={task.status} isActived={task === taskStore.activeTask} title={task.title} onChange={checkStatus => handleCheck(checkStatus, task)} onContextMenu={() => handleContextMenu(task)} onClick={() => setActiveTask(task)}></TaskItem>
             )}
           </For>
+          <ToggleButton id={TaskStatus.COMPLETED} title={taskStatusNameMap[TaskStatus.COMPLETED]} showTrigger={true} hoverEffect={false} expanded={true}>
+            <For each={taskGroups().get(TaskStatus.COMPLETED)}>
+              {task => (
+                <TaskItem taskStatus={task.status} isActived={task === taskStore.activeTask} title={task.title} onChange={checkStatus => handleCheck(checkStatus, task)} onContextMenu={() => handleContextMenu(task)} onClick={() => setActiveTask(task)}></TaskItem>
+              )}
+            </For>
+          </ToggleButton>
         </ContextMenuContainer>
       </div>
     </div>

@@ -2,7 +2,7 @@ import type { Accessor, ParentComponent } from 'solid-js'
 
 export interface ToggleButtonProps {
   id: string | number
-  index: number | Accessor<number>
+  index?: number | Accessor<number>
   title: string
   expanded?: boolean
   showOption?: boolean
