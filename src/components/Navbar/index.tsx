@@ -3,6 +3,8 @@ import type { ParentProps } from 'solid-js'
 import { createShortcut } from '@solid-primitives/keyboard'
 import { useCommandModal, useSearch } from '../Command'
 import List from '../List'
+import { Loading } from '../Loading'
+import { Empty } from '../Empty'
 import { goToGithub, useGoto } from '@/hooks/useGoto'
 import type { Command } from '@/hooks/command/useCommand'
 import type { Task } from '@/store'
@@ -50,7 +52,7 @@ const TooltipLiContent = (props: ParentProps<{
 export default function Navbar() {
   const { currHref, handleNavigate } = useGoto()
   const { openCommandModal, closeCommandModal, commandModalVisible, setCommandModalVisible, registerKeyboardShortcut, toggleCommandModal } = useCommandModal()
-  const { filterTasks, search } = useSearch()
+  const { loading, filterTasks, search } = useSearch()
 
   registerKeyboardShortcut()
 
@@ -111,11 +113,14 @@ export default function Navbar() {
                 <i i-carbon-close w-6 h-6></i>
               </Dialog.CloseButton> */}
             </div>
-            <Dialog.Description class="m-0">
-              <List.Root>
-              <For each={filterTasks()} fallback={'loading'}>
-                {item => (<List.Item onClick={() => handleCommand(item) }>{item.title}</List.Item>)}
-              </For>
+            <Dialog.Description class="m-0 w-full h-full">
+              <List.Root class='w-full h-full'>
+                <Show when={!loading()} fallback={<Loading></Loading>}>
+                  <For each={filterTasks()} fallback={<Empty />}>
+                    {item => (<List.Item onClick={() => handleCommand(item) }>{item.title}</List.Item>)}
+                  </For>
+                </Show>
+
               </List.Root>
             </Dialog.Description>
           </Dialog.Content>

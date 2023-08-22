@@ -8,6 +8,7 @@ export interface ListRootProps {
   // activedKey?: Accessor<string | undefined>
   activedKey?: string
   allowCancel?: boolean
+  class?: string
 }
 
 export function ListRoot(props: ParentProps<ListRootProps>) {
@@ -21,7 +22,7 @@ export function ListRoot(props: ParentProps<ListRootProps>) {
   }
   return (
     <ListContext.Provider value={context}>
-      <ul class="" w-full m-0 px-2 pt-2 box-border text-gray-7>
+      <ul class={props.class} w-full m-0 px-2 pt-2 box-border text-gray-7>
         {props.children}
       </ul>
     </ListContext.Provider>
