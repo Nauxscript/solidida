@@ -9,6 +9,7 @@ export interface ToggleButtonProps {
   itemClick?: (id: ToggleButtonProps['id'], index: number, event: MouseEvent) => void
   showTrigger?: boolean
   hoverEffect?: boolean
+  hideTrigger?: boolean
 }
 
 type ToggleButtonComProps = ParentComponent<ToggleButtonProps>
@@ -22,7 +23,7 @@ const ToggleButton: ToggleButtonComProps = (props) => {
   const defalutProps = mergeProps({ hoverEffect: true }, props)
   return (
     <>
-      <div class='group' classList={{ 'hover:bg-blue-50': defalutProps.hoverEffect }} flex items-center text-sm lh-8 font-normal list-none pl-0 pr-3 rounded cursor-pointer text-gray-7 onClick={() => setExpanded(!expanded())}>
+      <div class='group' classList={{ 'hover:bg-blue-50': defalutProps.hoverEffect, 'flex': !props.hideTrigger, 'hidden': props.hideTrigger }} items-center text-sm lh-8 font-normal list-none pl-0 pr-3 rounded cursor-pointer text-gray-7 onClick={() => setExpanded(!expanded())}>
         <i classList={{ 'invisible': !defalutProps.showTrigger, 'i-carbon-chevron-down': expanded(), 'i-carbon-chevron-right': !expanded() }} group-hover:visible text-gray-4></i>
         <div class="content" flex-1>
           {defalutProps.title}
