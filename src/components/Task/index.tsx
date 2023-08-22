@@ -31,12 +31,14 @@ export const Tasks: Component<{}> = (props) => {
   const [addTask, completeTask, undoCompleteTask, setActiveTask, removeTask] = useTasksStore(state => [state.addTask, state.completeTask, state.undoCompleteTask, state.setActiveTask, state.removeTask])
 
   const taskGroups = createMemo(() => {
-    const res = groupByKey(tasks, 'status', (key, group) => {
-      return {
-        name: taskStatusNameMap[key as TaskStatus],
-        key,
-        tasks: group,
-      }
+    const res = groupByKey(tasks, 'status', {
+      groupFn: (key, group) => {
+        return {
+          name: taskStatusNameMap[key as TaskStatus],
+          key,
+          tasks: group,
+        }
+      },
     }) as { name: string; key: string; tasks: Task[] }[]
     return res
   })
