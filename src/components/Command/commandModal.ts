@@ -9,7 +9,7 @@ const shortcutOfMac = ['Meta', 'k']
 const shortcutOfWin = ['Control', 'k']
 
 export const useCommandModal = () => {
-  const { resetSearch } = useSearch()
+  const { resetSearch, quitCommandMode } = useSearch()
 
   const openCommandModal = () => {
     setCommandModalVisible(true)
@@ -18,6 +18,7 @@ export const useCommandModal = () => {
   const closeCommandModal = () => {
     setCommandModalVisible(false)
     resetSearch()
+    quitCommandMode()
   }
 
   const toggleCommandModal = (visible?: boolean) => {

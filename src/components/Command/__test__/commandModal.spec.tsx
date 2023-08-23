@@ -109,11 +109,12 @@ describe('Command Modal', () => {
     test('command search', () => {
       createRoot(async () => {
         const { openCommandModal } = useCommandModal()
-        const { search, filterTasks } = useSearch()
+        const { search, filterTasks, isCommandMode } = useSearch()
         openCommandModal()
         const command = '明天'
         const keyword = `> ${command}`
         await search(keyword)
+        expect(isCommandMode()).toBeTruthy()
         expect(filterTasks()[0].title).toBe(command)
       })
     })
@@ -121,13 +122,16 @@ describe('Command Modal', () => {
     test('search loading', () => {
       createRoot(async () => {
         const { openCommandModal } = useCommandModal()
-        const { search, loading } = useSearch()
+        const { search, loading, isCommandMode } = useSearch()
         openCommandModal()
         expect(loading()).toBeFalsy()
         search('吃饭')
         expect(loading()).toBeTruthy()
         await new Promise(resolve => setTimeout(resolve))
         expect(loading()).toBeFalsy()
+        // eslint-disable-next-line no-console
+        console.log(isCommandMode())
+        expect(isCommandMode()).toBeFalsy()
       })
     })
   })
