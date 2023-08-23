@@ -129,8 +129,6 @@ describe('Command Modal', () => {
         expect(loading()).toBeTruthy()
         await new Promise(resolve => setTimeout(resolve))
         expect(loading()).toBeFalsy()
-        // eslint-disable-next-line no-console
-        console.log(isCommandMode())
         expect(isCommandMode()).toBeFalsy()
       })
     })
