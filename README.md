@@ -16,7 +16,7 @@
 
 ## Description
 
-Welcome to contribute to this project by submitting a pull request to add more practical features! You can refer to the dida project for inspiration on what features to add. And don’t forget to use TDD for feature development!
+Welcome to contribute to this project by submitting a pull request to add more practical features! You can refer to **[滴答清单](https://www.dida365.com/webapp/)** for inspiration on what features to add. And don’t forget to use TDD for feature development!
 
 ## Usage
 
