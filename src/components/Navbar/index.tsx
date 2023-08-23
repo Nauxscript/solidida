@@ -53,7 +53,7 @@ const TooltipLiContent = (props: ParentProps<{
 export default function Navbar() {
   const { currHref, handleNavigate } = useGoto()
   const { openCommandModal, closeCommandModal, commandModalVisible, registerKeyboardShortcut, toggleCommandModal } = useCommandModal()
-  const { loading, filterTasks, search } = useSearch()
+  const { loading, isCommandMode, filterTasks, search } = useSearch()
 
   registerKeyboardShortcut()
 
@@ -108,7 +108,10 @@ export default function Navbar() {
           <Dialog.Content class="flex-col-box h-450px w-720px dialog-shadow bg-white rounded-2  box-border">
             <div relative p-4 pb-0>
               <Dialog.Title class='m-0 mb-2 flex h-8 relative'>
-                <input type="text" name="" id="" border="t-0 x-0 solid b-1px" w-full h-full pr-14 text-4 font-normal focus="focus:shadow-none outline-none border-b-blue-2" onInput={handleChange}/>
+                <div class='top-.5 absolute' classList={{ flex: isCommandMode() }} bg-white >
+                  <i i-carbon-chevron-right left-0 text-6 text-blue-1 font-bold ></i>
+                </div>
+                <input type="text" name="" id="" border="t-0 x-0 solid b-1px" w-full h-full pr-14 text-4 font-normal focus="focus:shadow-none outline-none border-b-blue-2" classList={{ 'pl-4': isCommandMode() }} onInput={handleChange}/>
                 {/* <i i-carbon-mac-command right-8 text-4 class='top-1.6 absolute'></i> */}
                 <span right-2 text-4 text-gray-4 class='top-1.2 absolute'>⌘ + ;</span>
               </Dialog.Title>
