@@ -3,7 +3,7 @@
 </h4>
 
 <h5 align='center'>
-<a href="https://solidida.vercel.app/p/">Live Demo</a>
+<a href="https://solidida.vercel.app/" target="_blank">Live Demo</a>
 </h5>
 
 <br>
@@ -14,7 +14,7 @@
 
 <br>
 
-## description
+## Description
 
 Welcome to contribute to this project by submitting a pull request to add more practical features! You can refer to the dida project for inspiration on what features to add. And don’t forget to use TDD for feature development!
 

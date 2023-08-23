@@ -3,7 +3,7 @@
 </h4>
 
 <h5 align='center'>
-<a href="https://solidida.vercel.app/p/">在线 Demo</a>
+<a href="https://solidida.vercel.app/" target="_blank">在线 Demo</a>
 </h5>
 
 <br>
