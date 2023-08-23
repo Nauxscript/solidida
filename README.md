@@ -1,52 +1,32 @@
-<h5 align='center'>
-<b>Lightweight Vite Starter Template for Solid</b>
-</h5>
+<h4 align='center'>
+<b>a Real-World to-do list project based on TTD (Test-Driven Development) using SolidJS</b>
+</h4>
 
-<h6 align='center'>
-<a href="https://vitesse-lite-solid.vercel.app/">Live Demo</a>
-</h6>
+<h5 align='center'>
+<a href="https://solidida.vercel.app/p/">Live Demo</a>
+</h5>
 
 <br>
 
 <p align='center'>
-<b>English</b> | <a href="https://github.com/Nauxscript/vitesse-lite-solid/blob/main/README.zh-CN.md">简体中文</a>
+<b>English</b> | <a href="https://github.com/Nauxscript/solidida/blob/main/README.zh-CN.md">简体中文</a>
 </p>
 
-## Features
+<br>
 
-- ⚡️ [Solid](https://github.com/solidjs/solid), [Vite 4](https://github.com/vitejs/vite), [pnpm](https://pnpm.io/), [ESBuild](https://github.com/evanw/esbuild) - born with fastness
+## description
 
-- 🗂 [File based routing (lack of description)]()
+Welcome to contribute to this project by submitting a pull request to add more practical features! You can refer to the dida project for inspiration on what features to add. And don’t forget to use TDD for feature development!
 
-- 📦 [Components auto importing](./src/components)
+## Usage
 
-- 🎨 [UnoCSS](https://github.com/antfu/unocss) - The instant on-demand atomic CSS engine.
+Just run and visit [http://localhost:5354](http://localhost:5354)
 
-- 😃 Use icons from any icon sets in [Pure CSS](https://github.com/antfu/unocss/tree/main/packages/preset-icons)
-
-- ✅ Use [Vitest](http://vitest.dev/) for unit and components testing
-
-- 🦾 TypeScript, of course
-
-- ️⛰️ Deploy on Vercel, zero-config
-
-## Try it now!
-
-### GitHub Template
-
-[Create a repo from this template on GitHub](https://github.com/Nauxscript/vitesse-lite-solid/generate).
-
-### Clone to local
-
-If you prefer to do it manually with the cleaner git history
-
-```bash
-npx degit Nauxscript/vitesse-lite-solid my-solid-app
-cd my-solid-app
-pnpm i # If you don't have pnpm installed, run: npm install -g pnpm
+```
+pnpm run dev
 ```
 
 ## Credits
 
-- Inspired by [vitesse](https://github.com/antfu/vitesse)
-- [vitesse-solid](https://github.com/xbmlz/vitesse-solid)
+- Inspired by [dida](https://github.com/cuixueshe/dida)
+- Built using the [vitesse-lite-solid](https://github.com/Nauxscript/vitesse-lite-solid) startup template. If you find it useful, please star the repository, and PR is welcome!

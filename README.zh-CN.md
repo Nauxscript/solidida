@@ -1,33 +1,32 @@
-<h5 align='center'>
-<b>基于 Vite 的轻量级 Solid 开发模板</b>
-</h5>
+<h4 align='center'>
+<b>一个测试驱动开发（TDD）方式的实践项目，基于 SolidJS</b>
+</h4>
 
-<h6 align='center'>
-<a href="https://vitesse-lite-solid.vercel.app/">在线 Demo</a>
-</h6>
+<h5 align='center'>
+<a href="https://solidida.vercel.app/p/">在线 Demo</a>
+</h5>
 
 <br>
 
 <p align='center'>
-<a href="https://github.com/Nauxscript/vitesse-lite-solid/blob/main/README.md">English</a> | <b>简体中文</b>
+<a href="https://github.com/Nauxscript/solidida/blob/main/README.md">English</a> | <b>简体中文</b>
 </p>
 
 <br>
 
-## 特性
+## 描述 
 
-- ⚡️ [Solid](https://github.com/solidjs/solid), [Vite 4](https://github.com/vitejs/vite), [pnpm](https://pnpm.io/), [ESBuild](https://github.com/evanw/esbuild) - 就是快！
+非常欢迎给这个项目pr, 为这个项目增加更多的实用功能！功能可以参照 **[滴答清单](https://www.dida365.com/webapp/)** ；不要忘了使用 **TDD** 进行功能开发哦！
 
-- 🗂 [基于文件的路由(缺少描述...)]()
+## 本地运行
 
-- 📦 [组件自动化加载](./src/components)
+运行后在 [http://localhost:5354](http://localhost:5354) 查看
 
-- 🎨 [UnoCSS](https://github.com/unocss/unocss) - 高性能且极具灵活性的即时原子化 CSS 引擎
+```
+pnpm run dev
+```
 
-- 😃 [各种图标集为你所用](https://github.com/antfu/unocss/tree/main/packages/preset-icons)
+## 感谢
 
-- ✅ 使用 [Vitest](http://vitest.dev/) 进行单元和组件测试
-
-- 🦾 TypeScript, 当然
-
-- ⛰️ 零配置部署 Netlify
+- 启发自 [dida](https://github.com/cuixueshe/dida)
+- 使用 [vitesse-lite-solid](https://github.com/Nauxscript/vitesse-lite-solid) 模板进行项目初始构建，如果对你有用，烦请给个小小的 ⭐~，也非常欢迎 PR!
