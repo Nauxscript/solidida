@@ -21,6 +21,7 @@
 		"@solidjs/router": "^0.8.3",
 		"@solidjs/testing-library": "^0.8.4",
 		"@testing-library/jest-dom": "^6.1.2",
+		"@testing-library/user-event": "^14.4.3",
 		"@types/testing-library__jest-dom": "^5.14.9",
 		"@unocss/preset-icons": "^0.55.4",
 		"@unocss/vite": "^0.55.4",
@@ -42,7 +43,6 @@
 	"dependencies": {
 		"@kobalte/core": "^0.11.0",
 		"@solid-primitives/keyboard": "^1.2.5",
-		"@testing-library/user-event": "^14.4.3",
 		"fuse.js": "^6.6.2",
 		"ink-mde": "^0.25.1",
 		"solid-js": "^1.7.11",
