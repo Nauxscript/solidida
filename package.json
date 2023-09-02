@@ -35,6 +35,7 @@
 		"solid-start-vercel": "^0.3.5",
 		"typescript": "^5.2.2",
 		"unocss": "^0.55.4",
+		"unplugin-icons": "^0.16.6",
 		"unplugin-auto-import": "^0.16.6",
 		"vite": "^4.4.9",
 		"vite-plugin-solid": "^2.7.0",
@@ -47,7 +48,6 @@
 		"ink-mde": "^0.27.0",
 		"solid-js": "^1.7.11",
 		"solid-zustand": "^1.7.0",
-		"unplugin-icons": "^0.16.6",
 		"zustand": "^4.4.1"
 	}
 }
