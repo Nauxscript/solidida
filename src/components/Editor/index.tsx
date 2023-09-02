@@ -1,6 +1,6 @@
 import { createSignal } from 'solid-js'
 import type { Instance } from 'ink-mde'
-import { Appearance, defineOptions, ink } from 'ink-mde'
+import { defineOptions, ink } from 'ink-mde'
 import type { Task } from '@/store'
 import { useTasksStore } from '@/store'
 
@@ -9,7 +9,7 @@ export interface EditorProps {
   onChange: (content: string) => void
 }
 
-const Editor = (props: EditorProps) => {
+function Editor(props: EditorProps) {
   const [editorRef, setEditorRef] = createSignal<HTMLDivElement>()
   const [editorClass, setEditorClass] = createSignal<Instance>()
 
@@ -40,7 +40,7 @@ const Editor = (props: EditorProps) => {
       },
     },
     interface: {
-      appearance: Appearance.Light,
+      appearance: 'light',
       attribution: false,
       toolbar: false,
       lists: true,
