@@ -1,11 +1,12 @@
 /// <reference types="vitest" />
-import path from 'path'
+import path from 'node:path'
 import { defineConfig } from 'vite'
 import Solid from 'solid-start/vite'
 import UnoCSS from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import { presetAttributify, presetIcons, presetUno } from 'unocss'
 import vercelAdapter from 'solid-start-vercel'
+
 // import staticAdapter from 'solid-start-static'
 
 export default defineConfig({
@@ -27,7 +28,7 @@ export default defineConfig({
         inline: [/solid-js/],
       },
     },
-    setupFiles: ['node_modules/@testing-library/jest-dom/extend-expect', './setupVitest.js'],
+    setupFiles: ['./setupVitest.js'],
     // transformMode: { web: [/\.[jt]sx?$/] },
     // css: true,
   },
