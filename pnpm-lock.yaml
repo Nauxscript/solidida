@@ -92,8 +92,8 @@ devDependencies:
     specifier: ^0.55.4
     version: 0.55.4(postcss@8.4.29)(rollup@3.28.1)(vite@4.4.9)
   unplugin-auto-import:
-    specifier: ^0.13.0
-    version: 0.13.0(rollup@3.28.1)
+    specifier: ^0.16.6
+    version: 0.16.6(rollup@3.28.1)
   vite:
     specifier: ^4.4.9
     version: 4.4.9(@types/node@20.5.8)
@@ -5998,6 +5998,13 @@ packages:
       brace-expansion: 2.0.1
     dev: true
 
+  /minimatch@9.0.3:
+    resolution: {integrity: sha512-RHiac9mvaRw0x3AYRgDC1CxAP7HTcNrrECeA8YYJeWnpo+2Q5CegtZjaotWTWxDG3UeGA1coE05iH1mPjT/2mg==}
+    engines: {node: '>=16 || 14 >=14.17'}
+    dependencies:
+      brace-expansion: 2.0.1
+    dev: true
+
   /minimist@1.2.8:
     resolution: {integrity: sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==}
     dev: true
@@ -7438,14 +7445,14 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
-  /unimport@2.2.4(rollup@3.28.1):
-    resolution: {integrity: sha512-qMgmeEGqqrrmEtm0dqxMG37J6xBtrriqxq9hILvDb+e6l2F0yTnJomLoCCp0eghLR7bYGeBsUU5Y0oyiUYhViw==}
+  /unimport@3.2.0(rollup@3.28.1):
+    resolution: {integrity: sha512-9buxPxkNwxwxAlH/RfOFHxtQTUrlmBGi9Ai9HezY2yYbkoOhgJTYPI6+WqxI1EZphoM9cw1SHoCFRkXSb8/fjQ==}
     dependencies:
       '@rollup/pluginutils': 5.0.4(rollup@3.28.1)
       escape-string-regexp: 5.0.0
       fast-glob: 3.3.1
       local-pkg: 0.4.3
-      magic-string: 0.27.0
+      magic-string: 0.30.3
       mlly: 1.4.1
       pathe: 1.1.1
       pkg-types: 1.0.3
@@ -7516,20 +7523,25 @@ packages:
     engines: {node: '>= 0.8'}
     dev: true
 
-  /unplugin-auto-import@0.13.0(rollup@3.28.1):
-    resolution: {integrity: sha512-nKMxDbkjM4FRPInFfm7sWrJOKgxfKKwb5yLPP+DEGl/SG0/FtBoW1LnZL4PQfx0FXjertoHO1P/5nDf+RSip2Q==}
+  /unplugin-auto-import@0.16.6(rollup@3.28.1):
+    resolution: {integrity: sha512-M+YIITkx3C/Hg38hp8HmswP5mShUUyJOzpifv7RTlAbeFlO2Tyw0pwrogSSxnipHDPTtI8VHFBpkYkNKzYSuyA==}
     engines: {node: '>=14'}
     peerDependencies:
+      '@nuxt/kit': ^3.2.2
       '@vueuse/core': '*'
     peerDependenciesMeta:
+      '@nuxt/kit':
+        optional: true
       '@vueuse/core':
         optional: true
     dependencies:
       '@antfu/utils': 0.7.6
       '@rollup/pluginutils': 5.0.4(rollup@3.28.1)
+      fast-glob: 3.3.1
       local-pkg: 0.4.3
-      magic-string: 0.27.0
-      unimport: 2.2.4(rollup@3.28.1)
+      magic-string: 0.30.3
+      minimatch: 9.0.3
+      unimport: 3.2.0(rollup@3.28.1)
       unplugin: 1.4.0
     transitivePeerDependencies:
       - rollup
