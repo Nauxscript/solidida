@@ -23,7 +23,7 @@
 		"@testing-library/jest-dom": "^6.1.2",
 		"@testing-library/user-event": "^14.4.3",
 		"@types/testing-library__jest-dom": "^6.0.0",
-		"@unocss/preset-icons": "^0.55.4",
+		"@unocss/preset-icons": "^0.55.7",
 		"@unocss/vite": "^0.55.7",
 		"babel-preset-solid": "^1.7.7",
 		"eslint": "^8.48.0",
