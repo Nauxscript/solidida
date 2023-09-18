@@ -15,7 +15,7 @@
 		"lint:fix": "eslint . --fix"
 	},
 	"devDependencies": {
-		"@antfu/eslint-config": "^0.41.0",
+		"@antfu/eslint-config": "^0.42.1",
 		"@iconify-json/carbon": "^1.1.21",
 		"@solidjs/meta": "^0.28.6",
 		"@solidjs/router": "^0.8.3",
