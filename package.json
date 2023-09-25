@@ -45,7 +45,7 @@
 		"@kobalte/core": "^0.11.0",
 		"@solid-primitives/keyboard": "^1.2.5",
 		"fuse.js": "^6.6.2",
-		"ink-mde": "^0.27.0",
+		"ink-mde": "^0.28.0",
 		"solid-js": "^1.7.11",
 		"solid-zustand": "^1.7.0",
 		"zustand": "^4.4.1"

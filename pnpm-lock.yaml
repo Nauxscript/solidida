@@ -11,8 +11,8 @@ dependencies:
     specifier: ^6.6.2
     version: 6.6.2
   ink-mde:
-    specifier: ^0.27.0
-    version: 0.27.0
+    specifier: ^0.28.0
+    version: 0.28.0
   solid-js:
     specifier: ^1.7.11
     version: 1.7.11
@@ -5185,8 +5185,8 @@ packages:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
     dev: true
 
-  /ink-mde@0.27.0:
-    resolution: {integrity: sha512-5081DpIQxCusv/ndrXyTcKVyeNj0tV764O3vtfhHpXykSHg1IbG9IHG3jY4oFkHBMH1xApHNBXL5kmvJ5lsl0Q==}
+  /ink-mde@0.28.0:
+    resolution: {integrity: sha512-42O1LeuW99M3aNWTb5tV4fTF2f8p5318Gd8ji7LGJyJ1qhED0E/vyVlXkucypkEZDnY0QmVKy9f4UwuO1SxkTw==}
     peerDependencies:
       svelte: ^3.0.0
       vue: ^3.0.0
