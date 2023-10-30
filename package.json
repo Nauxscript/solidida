@@ -48,6 +48,6 @@
 		"ink-mde": "^0.29.1",
 		"solid-js": "^1.8.4",
 		"solid-zustand": "^1.7.0",
-		"zustand": "^4.4.3"
+		"zustand": "^4.4.4"
 	}
 }
