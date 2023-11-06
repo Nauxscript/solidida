@@ -2,8 +2,8 @@ lockfileVersion: '6.0'
 
 dependencies:
   '@kobalte/core':
-    specifier: ^0.11.0
-    version: 0.11.0(solid-js@1.8.4)
+    specifier: ^0.11.2
+    version: 0.11.2(solid-js@1.8.4)
   '@solid-primitives/keyboard':
     specifier: ^1.2.5
     version: 1.2.5(solid-js@1.8.4)
@@ -2328,8 +2328,8 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.15
     dev: true
 
-  /@kobalte/core@0.11.0(solid-js@1.8.4):
-    resolution: {integrity: sha512-KflwKawdAXv1/W1Eh88SPTwpxGTVs7bAGkkW72w6pnRI3hcFWXEH+E/9CojoFrIc3WVBUT+y7GzaYLOKCailDw==}
+  /@kobalte/core@0.11.2(solid-js@1.8.4):
+    resolution: {integrity: sha512-B19TvpmR0E8n7LJqopF0lbMayBErnWJ5MlTTnrgVAFU1up/2Bo1O6ldTK1c5NikmpppzIK2A8ovUwIhRqw/3Uw==}
     peerDependencies:
       solid-js: ^1.7.11
     dependencies:
