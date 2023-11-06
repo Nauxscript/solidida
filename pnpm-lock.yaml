@@ -94,8 +94,8 @@ devDependencies:
     specifier: ^4.5.0
     version: 4.5.0
   vite-plugin-solid:
-    specifier: ^2.7.1
-    version: 2.7.1(solid-js@1.8.4)(vite@4.5.0)
+    specifier: ^2.7.2
+    version: 2.7.2(solid-js@1.8.4)(vite@4.5.0)
   vitest:
     specifier: ^0.34.6
     version: 0.34.6(happy-dom@12.9.1)(jsdom@22.1.0)
@@ -6919,7 +6919,7 @@ packages:
       undici: 5.26.3
       vite: 4.5.0
       vite-plugin-inspect: 0.7.38(rollup@3.28.1)(vite@4.5.0)
-      vite-plugin-solid: 2.7.1(solid-js@1.8.4)(vite@4.5.0)
+      vite-plugin-solid: 2.7.2(solid-js@1.8.4)(vite@4.5.0)
       wait-on: 6.0.1(debug@4.3.4)
     transitivePeerDependencies:
       - '@nuxt/kit'
@@ -7531,8 +7531,8 @@ packages:
       - supports-color
     dev: true
 
-  /vite-plugin-solid@2.7.1(solid-js@1.8.4)(vite@4.5.0):
-    resolution: {integrity: sha512-1rTuJdsDqCZiAWfiEkUeRRz4MaxWhqzgJ6PURN+bBSp4uACA/esgYN9Un++YE+xeXUOHlOwTF+VSdvieEcMz0w==}
+  /vite-plugin-solid@2.7.2(solid-js@1.8.4)(vite@4.5.0):
+    resolution: {integrity: sha512-GV2SMLAibOoXe76i02AsjAg7sbm/0lngBlERvJKVN67HOrJsHcWgkt0R6sfGLDJuFkv2aBe14Zm4vJcNME+7zw==}
     peerDependencies:
       solid-js: ^1.7.2
       vite: ^3.0.0 || ^4.0.0
