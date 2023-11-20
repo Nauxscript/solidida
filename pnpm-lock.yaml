@@ -17,8 +17,8 @@ dependencies:
     specifier: ^1.8.5
     version: 1.8.5
   solid-zustand:
-    specifier: ^1.7.0
-    version: 1.7.0(solid-js@1.8.5)(zustand@4.4.6)
+    specifier: ^1.7.1
+    version: 1.7.1(solid-js@1.8.5)(zustand@4.4.6)
   zustand:
     specifier: ^4.4.6
     version: 4.4.6
@@ -6949,8 +6949,8 @@ packages:
       - supports-color
     dev: true
 
-  /solid-zustand@1.7.0(solid-js@1.8.5)(zustand@4.4.6):
-    resolution: {integrity: sha512-BWLSYIUOr7qhAdY+IFh1fA3+s6LvqQuxmHgzuZ8BQHHBcoq/a1S+lgDbWQmFF8fhmJyXHbSbp/WlPJgvdjmSiw==}
+  /solid-zustand@1.7.1(solid-js@1.8.5)(zustand@4.4.6):
+    resolution: {integrity: sha512-5XpeDKFJGzj6NfXlQkq2vdgqUwkVamrpxxoOrpFF5pNKIzBhoXJRGKGE1zSZ1xJw1/Ab7oHV9JJr4E6jg1kXkw==}
     peerDependencies:
       solid-js: ^1.6.0
       zustand: ^4.3.0
