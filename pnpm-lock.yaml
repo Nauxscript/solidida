@@ -18,10 +18,10 @@ dependencies:
     version: 1.8.7
   solid-zustand:
     specifier: ^1.7.1
-    version: 1.7.1(solid-js@1.8.7)(zustand@4.4.6)
+    version: 1.7.1(solid-js@1.8.7)(zustand@4.4.7)
   zustand:
-    specifier: ^4.4.6
-    version: 4.4.6
+    specifier: ^4.4.7
+    version: 4.4.7
 
 devDependencies:
   '@antfu/eslint-config':
@@ -7133,14 +7133,14 @@ packages:
       - supports-color
     dev: true
 
-  /solid-zustand@1.7.1(solid-js@1.8.7)(zustand@4.4.6):
+  /solid-zustand@1.7.1(solid-js@1.8.7)(zustand@4.4.7):
     resolution: {integrity: sha512-5XpeDKFJGzj6NfXlQkq2vdgqUwkVamrpxxoOrpFF5pNKIzBhoXJRGKGE1zSZ1xJw1/Ab7oHV9JJr4E6jg1kXkw==}
     peerDependencies:
       solid-js: ^1.6.0
       zustand: ^4.3.0
     dependencies:
       solid-js: 1.8.7
-      zustand: 4.4.6
+      zustand: 4.4.7
     dev: false
 
   /source-map-js@1.0.2:
@@ -8131,8 +8131,8 @@ packages:
     engines: {node: '>=12.20'}
     dev: true
 
-  /zustand@4.4.6:
-    resolution: {integrity: sha512-Rb16eW55gqL4W2XZpJh0fnrATxYEG3Apl2gfHTyDSE965x/zxslTikpNch0JgNjJA9zK6gEFW8Fl6d1rTZaqgg==}
+  /zustand@4.4.7:
+    resolution: {integrity: sha512-QFJWJMdlETcI69paJwhSMJz7PPWjVP8Sjhclxmxmxv/RYI7ZOvR5BHX+ktH0we9gTWQMxcne8q1OY8xxz604gw==}
     engines: {node: '>=12.7.0'}
     peerDependencies:
       '@types/react': '>=16.8'
