@@ -55,8 +55,8 @@ devDependencies:
     specifier: ^0.58.0
     version: 0.58.0(vite@4.5.1)
   babel-preset-solid:
-    specifier: ^1.8.4
-    version: 1.8.4
+    specifier: ^1.8.6
+    version: 1.8.6
   eslint:
     specifier: ^8.54.0
     version: 8.54.0
@@ -3649,8 +3649,8 @@ packages:
       - debug
     dev: true
 
-  /babel-plugin-jsx-dom-expressions@0.37.8:
-    resolution: {integrity: sha512-nVHH6g7541aaAQJAsyWHvjH7GCXZ+8tuF3Qu4y9W9aKwonRbcJL+yyMatDJLvjC54iIuGowiiZM6Rm3AVJczGg==}
+  /babel-plugin-jsx-dom-expressions@0.37.9:
+    resolution: {integrity: sha512-6w+zs2i14fVanj4e1hXCU5cp+x0U0LJ5jScknpMZZUteHhwFRGJflHMVJ+xAcW7ku41FYjr7DgtK9mnc2SXlJg==}
     peerDependencies:
       '@babel/core': ^7.20.12
     dependencies:
@@ -3661,8 +3661,8 @@ packages:
       validate-html-nesting: 1.2.2
     dev: true
 
-  /babel-plugin-jsx-dom-expressions@0.37.8(@babel/core@7.23.5):
-    resolution: {integrity: sha512-nVHH6g7541aaAQJAsyWHvjH7GCXZ+8tuF3Qu4y9W9aKwonRbcJL+yyMatDJLvjC54iIuGowiiZM6Rm3AVJczGg==}
+  /babel-plugin-jsx-dom-expressions@0.37.9(@babel/core@7.23.5):
+    resolution: {integrity: sha512-6w+zs2i14fVanj4e1hXCU5cp+x0U0LJ5jScknpMZZUteHhwFRGJflHMVJ+xAcW7ku41FYjr7DgtK9mnc2SXlJg==}
     peerDependencies:
       '@babel/core': ^7.20.12
     dependencies:
@@ -3710,21 +3710,21 @@ packages:
       - supports-color
     dev: true
 
-  /babel-preset-solid@1.8.4:
-    resolution: {integrity: sha512-TfI09EOFHsbhVqoM+svop3zY4zOUIBlZsGU16Rgd4NsYVXw6lv2VEn7dmlpczMMQy0IeO3PFiXlMQZWutB+uAQ==}
+  /babel-preset-solid@1.8.6:
+    resolution: {integrity: sha512-Ened42CHjU4EFkvNeS042/3Pm21yvMWn8p4G4ddzQTlKaMwSGGD1VciA/e7EshBVHJCcBj9vHiUd/r3A4qLPZA==}
     peerDependencies:
       '@babel/core': ^7.0.0
     dependencies:
-      babel-plugin-jsx-dom-expressions: 0.37.8
+      babel-plugin-jsx-dom-expressions: 0.37.9
     dev: true
 
-  /babel-preset-solid@1.8.4(@babel/core@7.23.5):
-    resolution: {integrity: sha512-TfI09EOFHsbhVqoM+svop3zY4zOUIBlZsGU16Rgd4NsYVXw6lv2VEn7dmlpczMMQy0IeO3PFiXlMQZWutB+uAQ==}
+  /babel-preset-solid@1.8.6(@babel/core@7.23.5):
+    resolution: {integrity: sha512-Ened42CHjU4EFkvNeS042/3Pm21yvMWn8p4G4ddzQTlKaMwSGGD1VciA/e7EshBVHJCcBj9vHiUd/r3A4qLPZA==}
     peerDependencies:
       '@babel/core': ^7.0.0
     dependencies:
       '@babel/core': 7.23.5
-      babel-plugin-jsx-dom-expressions: 0.37.8(@babel/core@7.23.5)
+      babel-plugin-jsx-dom-expressions: 0.37.9(@babel/core@7.23.5)
     dev: true
 
   /balanced-match@1.0.2:
@@ -4354,7 +4354,7 @@ packages:
     dependencies:
       '@babel/core': 7.23.5
       '@babel/preset-typescript': 7.23.3(@babel/core@7.23.5)
-      babel-preset-solid: 1.8.4(@babel/core@7.23.5)
+      babel-preset-solid: 1.8.6(@babel/core@7.23.5)
       esbuild: 0.17.19
       solid-js: 1.8.7
     transitivePeerDependencies:
@@ -7660,7 +7660,7 @@ packages:
       '@babel/core': 7.23.5
       '@babel/preset-typescript': 7.23.3(@babel/core@7.23.5)
       '@types/babel__core': 7.20.5
-      babel-preset-solid: 1.8.4(@babel/core@7.23.5)
+      babel-preset-solid: 1.8.6(@babel/core@7.23.5)
       merge-anything: 5.1.7
       solid-js: 1.8.7
       solid-refresh: 0.5.3(solid-js@1.8.7)
