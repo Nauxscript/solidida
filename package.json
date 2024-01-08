@@ -28,7 +28,7 @@
 		"babel-preset-solid": "^1.8.6",
 		"eslint": "^8.56.0",
 		"happy-dom": "^12.10.3",
-		"jsdom": "^23.0.1",
+		"jsdom": "^23.2.0",
 		"solid-start": "^0.3.8",
 		"solid-start-node": "^0.3.10",
 		"solid-start-static": "^0.3.10",
