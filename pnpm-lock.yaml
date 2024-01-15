@@ -2,8 +2,8 @@ lockfileVersion: '6.0'
 
 dependencies:
   '@kobalte/core':
-    specifier: ^0.11.2
-    version: 0.11.2(solid-js@1.8.9)
+    specifier: ^0.12.0
+    version: 0.12.0(solid-js@1.8.9)
   '@solid-primitives/keyboard':
     specifier: ^1.2.5
     version: 1.2.5(solid-js@1.8.9)
@@ -2647,40 +2647,6 @@ packages:
     resolution: {integrity: sha512-m0G6wlnhm/AX0H12IOWtK8gASEMffnX08RtKkCgTdHb9JpHKGloI7icFfLg9ZmQeavcvR0PKmzxClyuFPSjKWw==}
     dev: false
 
-  /@formatjs/ecma402-abstract@1.17.0:
-    resolution: {integrity: sha512-6ueQTeJZtwKjmh23bdkq/DMqH4l4bmfvtQH98blOSbiXv/OUiyijSW6jU22IT8BNM1ujCaEvJfTtyCYVH38EMQ==}
-    dependencies:
-      '@formatjs/intl-localematcher': 0.4.0
-      tslib: 2.6.2
-    dev: false
-
-  /@formatjs/fast-memoize@2.2.0:
-    resolution: {integrity: sha512-hnk/nY8FyrL5YxwP9e4r9dqeM6cAbo8PeU9UjyXojZMNvVad2Z06FAVHyR3Ecw6fza+0GH7vdJgiKIVXTMbSBA==}
-    dependencies:
-      tslib: 2.6.2
-    dev: false
-
-  /@formatjs/icu-messageformat-parser@2.6.0:
-    resolution: {integrity: sha512-yT6at0qc0DANw9qM/TU8RZaCtfDXtj4pZM/IC2WnVU80yAcliS3KVDiuUt4jSQAeFL9JS5bc2hARnFmjPdA6qw==}
-    dependencies:
-      '@formatjs/ecma402-abstract': 1.17.0
-      '@formatjs/icu-skeleton-parser': 1.6.0
-      tslib: 2.6.2
-    dev: false
-
-  /@formatjs/icu-skeleton-parser@1.6.0:
-    resolution: {integrity: sha512-eMmxNpoX/J1IPUjPGSZwo0Wh+7CEvdEMddP2Jxg1gQJXfGfht/FdW2D5XDFj3VMbOTUQlDIdZJY7uC6O6gjPoA==}
-    dependencies:
-      '@formatjs/ecma402-abstract': 1.17.0
-      tslib: 2.6.2
-    dev: false
-
-  /@formatjs/intl-localematcher@0.4.0:
-    resolution: {integrity: sha512-bRTd+rKomvfdS4QDlVJ6TA/Jx1F2h/TBVO5LjvhQ7QPPHp19oPNMIum7W2CMEReq/zPxpmCeB31F9+5gl/qtvw==}
-    dependencies:
-      tslib: 2.6.2
-    dev: false
-
   /@hapi/hoek@9.3.0:
     resolution: {integrity: sha512-/c6rf4UJlmHlC9b5BaNvzAcFv7HZ2QHaV0D4/HNlBdvFnvQq8RI4kYdhyPCl7Xj+oWvTWQ8ujhqS53LIgAe6KQ==}
     dev: true
@@ -2753,13 +2719,6 @@ packages:
       '@swc/helpers': 0.5.1
     dev: false
 
-  /@internationalized/message@3.1.1:
-    resolution: {integrity: sha512-ZgHxf5HAPIaR0th+w0RUD62yF6vxitjlprSxmLJ1tam7FOekqRSDELMg4Cr/DdszG5YLsp5BG3FgHgqquQZbqw==}
-    dependencies:
-      '@swc/helpers': 0.5.1
-      intl-messageformat: 10.5.0
-    dev: false
-
   /@internationalized/number@3.2.1:
     resolution: {integrity: sha512-hK30sfBlmB1aIe3/OwAPg9Ey0DjjXvHEiGVhNaOiBJl31G0B6wMaX8BN3ibzdlpyRNE9p7X+3EBONmxtJO9Yfg==}
     dependencies:
@@ -2810,14 +2769,13 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.15
     dev: true
 
-  /@kobalte/core@0.11.2(solid-js@1.8.9):
-    resolution: {integrity: sha512-B19TvpmR0E8n7LJqopF0lbMayBErnWJ5MlTTnrgVAFU1up/2Bo1O6ldTK1c5NikmpppzIK2A8ovUwIhRqw/3Uw==}
+  /@kobalte/core@0.12.0(solid-js@1.8.9):
+    resolution: {integrity: sha512-TjUYlFCbfQ8T3g7M0pZI5s0BtkDmojLxDZR/pnsmhOzY6hNdERmnHpwe+7IxLeOx/Vwtudfa+YGm7xdOhZ0o8Q==}
     peerDependencies:
       solid-js: ^1.7.11
     dependencies:
       '@floating-ui/dom': 1.5.1
       '@internationalized/date': 3.4.0
-      '@internationalized/message': 3.1.1
       '@internationalized/number': 3.2.1
       '@kobalte/utils': 0.9.0(solid-js@1.8.9)
       solid-js: 1.8.9
@@ -5992,15 +5950,6 @@ packages:
       has: 1.0.3
       side-channel: 1.0.4
     dev: true
-
-  /intl-messageformat@10.5.0:
-    resolution: {integrity: sha512-AvojYuOaRb6r2veOKfTVpxH9TrmjSdc5iR9R5RgBwrDZYSmAAFVT+QLbW3C4V7Qsg0OguMp67Q/EoUkxZzXRGw==}
-    dependencies:
-      '@formatjs/ecma402-abstract': 1.17.0
-      '@formatjs/fast-memoize': 2.2.0
-      '@formatjs/icu-messageformat-parser': 2.6.0
-      tslib: 2.6.2
-    dev: false
 
   /is-alphabetical@1.0.4:
     resolution: {integrity: sha512-DwzsA04LQ10FHTZuL0/grVDk4rFoVH1pjAToYwBrHSxcrBIGQuXrQMtD5U1b0U2XVgKZCTLLP8u2Qxqhy3l2Vg==}
