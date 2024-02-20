@@ -47,7 +47,7 @@
 		"fuse.js": "^7.0.0",
 		"ink-mde": "^0.31.0",
 		"solid-js": "^1.8.15",
-		"solid-zustand": "^1.7.1",
+		"solid-zustand": "^1.8.0",
 		"zustand": "^4.4.7"
 	}
 }
