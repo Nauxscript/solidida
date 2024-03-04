@@ -2,8 +2,8 @@ lockfileVersion: '6.0'
 
 dependencies:
   '@kobalte/core':
-    specifier: ^0.12.1
-    version: 0.12.1(solid-js@1.8.15)
+    specifier: ^0.12.2
+    version: 0.12.2(solid-js@1.8.15)
   '@solid-primitives/keyboard':
     specifier: ^1.2.6
     version: 1.2.6(solid-js@1.8.15)
@@ -1839,6 +1839,14 @@ packages:
       w3c-keyname: 2.2.8
     dev: false
 
+  /@corvu/utils@0.1.0(solid-js@1.8.15):
+    resolution: {integrity: sha512-9pqt77fiDiqUkW7gH+tRYyNCagQPTco7ljBAkbF23wIuJYrEWyr8KpX8rlPiz4x0ll6pqTYpiif8betkhpkOLQ==}
+    peerDependencies:
+      solid-js: ^1.8
+    dependencies:
+      solid-js: 1.8.15
+    dev: false
+
   /@es-joy/jsdoccomment@0.41.0:
     resolution: {integrity: sha512-aKUhyn1QI5Ksbqcr3fFJj16p99QdjUxXAEuFst1Z47DRyoiMwivIH9MV/ARcJOCXVjPfjITciej8ZD2O/6qUmw==}
     engines: {node: '>=16'}
@@ -2623,16 +2631,17 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.15
     dev: true
 
-  /@kobalte/core@0.12.1(solid-js@1.8.15):
-    resolution: {integrity: sha512-/GvgH/jknZ/jr3qnc8PwnPnwNfp8pQHj9Ja0TjFUcTsnGKS/XoDXSWqCjiKOL3M6uBfZmmdn1A/3i3Na4w9Ujg==}
+  /@kobalte/core@0.12.2(solid-js@1.8.15):
+    resolution: {integrity: sha512-j9p4MhK4MjtqFC3gKmH6oL1Lxi/L83uaU9gOdtzmDGORIRdV4L4UcA3MVN0leQJUkmPQh1yuXJgtYcnQGQSR3A==}
     peerDependencies:
-      solid-js: ^1.7.11
+      solid-js: ^1.8.15
     dependencies:
       '@floating-ui/dom': 1.5.1
       '@internationalized/date': 3.4.0
       '@internationalized/number': 3.2.1
       '@kobalte/utils': 0.9.0(solid-js@1.8.15)
       solid-js: 1.8.15
+      solid-prevent-scroll: 0.1.5(solid-js@1.8.15)
     dev: false
 
   /@kobalte/utils@0.9.0(solid-js@1.8.15):
@@ -7298,6 +7307,15 @@ packages:
       csstype: 3.1.2
       seroval: 1.0.3
       seroval-plugins: 1.0.3(seroval@1.0.3)
+
+  /solid-prevent-scroll@0.1.5(solid-js@1.8.15):
+    resolution: {integrity: sha512-8sIlHqaSclBGQJrsPabRlnlAKJib1+gfYWiQLG265tyxao+6yIaccIgbo58QHgPtRrRavANK7Io7DtAUBtP6QA==}
+    peerDependencies:
+      solid-js: ^1.8
+    dependencies:
+      '@corvu/utils': 0.1.0(solid-js@1.8.15)
+      solid-js: 1.8.15
+    dev: false
 
   /solid-refresh@0.6.3(solid-js@1.8.15):
     resolution: {integrity: sha512-F3aPsX6hVw9ttm5LYlth8Q15x6MlI/J3Dn+o3EQyRTtTxidepSTwAYdozt01/YA+7ObcciagGEyXIopGZzQtbA==}
