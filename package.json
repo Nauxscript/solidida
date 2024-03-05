@@ -43,7 +43,7 @@
 	},
 	"dependencies": {
 		"@kobalte/core": "^0.12.2",
-		"@solid-primitives/keyboard": "^1.2.6",
+		"@solid-primitives/keyboard": "^1.2.7",
 		"fuse.js": "^7.0.0",
 		"ink-mde": "^0.31.0",
 		"solid-js": "^1.8.15",
